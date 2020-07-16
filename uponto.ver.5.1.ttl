@@ -1,0 +1,2935 @@
+@prefix : <http://www.uponto.link/ontology/#> .
+@prefix kp: <http://ontology.eil.utoronto.ca/kp.owl#> .
+@prefix ns: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix om: <http://www.wurvoc.org/resource/om-2/> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1> .
+@prefix marc: <http://id.loc.gov/vocabulary/countries/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix rics-icms: <https://www.rics.org/rics-icms-1.1.xsd#> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@base <http://www.uponto.link/ontology/#> .
+
+<http://www.uponto.link/ontology/#> rdf:type owl:Ontology ;
+                                     dcterms:rights "All other rights are reserved for the creators." ;
+                                     rdfs:label "Uniform Project Ontology (UPonto)"@en ;
+                                     dcterms:creator "Pouya Zangeneh, Department of Civil and Mineral Engineering, University of Toronto."^^rdfs:Literal ;
+                                     dcterms:created "2020-07-01"^^xsd:date ;
+                                     <http://purl.org/vocab/vann/preferredNamespacePrefix> "uponto" ;
+                                     <http://purl.org/vocab/vann/preferredNamespaceUri> "http://www.uponto.link/ontology/#" ;
+                                     dcterms:license "<a rel=\"license\" href=\"http://creativecommons.org/licenses/by-sa/4.0/\"><img alt=\"Creative Commons License\" style=\"border-width:0\" src=\"https://i.creativecommons.org/l/by-sa/4.0/88x31.png\" /></a><br />This work is licensed under a <a rel=\"license\" href=\"http://creativecommons.org/licenses/by-sa/4.0/\">Creative Commons Attribution-ShareAlike 4.0 International License</a>" ;
+                                     rdfs:comment "UPonto is an open-source machine-readable graph data format to facilitate data exchange and project analytics for capital projects."^^rdfs:Literal ;
+                                     dcterms:contributor "Murray Pearson, Hatch Ltd."^^rdfs:Literal ;
+                                     dcterms:creator "Brenda McCabe, Department of Civil and Mineral Engineering, University of Toronto."^^rdfs:Literal ;
+                                     owl:versionInfo "ver.5.1. Issued for Review"@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+<http://purl.org/dc/elements/1.1/creator> rdf:type owl:AnnotationProperty ;
+                                          <http://purl.org/dc/elements/1.1/title> "this is a test title" .
+
+
+###  http://purl.org/dc/elements/1.1/date
+<http://purl.org/dc/elements/1.1/date> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/description
+<http://purl.org/dc/elements/1.1/description> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/identifier
+<http://purl.org/dc/elements/1.1/identifier> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/source
+<http://purl.org/dc/elements/1.1/source> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+<http://purl.org/dc/elements/1.1/title> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/contributor
+dcterms:contributor rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/created
+dcterms:created rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/creator
+dcterms:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+dcterms:description rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/license
+dcterms:license rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/rights
+dcterms:rights rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/source
+dcterms:source rdf:type owl:AnnotationProperty .
+
+
+###  http://www.loc.gov/mads/rdf/v1#code
+<http://www.loc.gov/mads/rdf/v1#code> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#range
+rdfs:range rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2002/07/owl#equivalentClass
+owl:equivalentClass rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2002/07/owl#equivalentProperty
+owl:equivalentProperty rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2003/01/geo/wgs84_pos#alt
+geo:alt rdf:type owl:AnnotationProperty ;
+        rdfs:comment """The WGS84 altitude of a SpatialThing (decimal meters 
+above the local reference ellipsoid).""" ;
+        rdfs:label "altitude" .
+
+
+###  http://www.w3.org/2003/01/geo/wgs84_pos#lat
+geo:lat rdf:type owl:AnnotationProperty ;
+        rdfs:comment "The WGS84 latitude of a SpatialThing (decimal degrees)." ;
+        rdfs:label "latitude" .
+
+
+###  http://www.w3.org/2003/01/geo/wgs84_pos#location
+geo:location rdf:type owl:AnnotationProperty ;
+             rdfs:comment """The relation between something and the point, 
+ or other geometrical thing in space, where it is.  For example, the realtionship between
+ a radio tower and a Point with a given lat and long.
+ Or a relationship between a park and its outline as a closed arc of points, or a road and
+ its location as a arc (a sequence of points).
+ Clearly in practice there will be limit to the accuracy of any such statement, but one would expect
+ an accuracy appropriate for the size of the object and uses such as mapping .
+ """ ;
+             rdfs:range geo:SpatialThing .
+
+
+###  http://www.w3.org/2003/01/geo/wgs84_pos#long
+geo:long rdf:type owl:AnnotationProperty ;
+         rdfs:comment "The WGS84 longitude of a SpatialThing (decimal degrees)." ;
+         rdfs:label "longitude" .
+
+
+###  http://www.w3.org/2003/06/sw-vocab-status/ns#term_status
+ns:term_status rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#notation
+skos:notation rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#prefLabel
+skos:prefLabel rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#scopeNote
+skos:scopeNote rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#duration
+xsd:duration rdf:type rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#gYear
+xsd:gYear rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.uponto.link/ontology/#confers
+:confers rdf:type owl:ObjectProperty ;
+         rdfs:domain :Contract ;
+         rdfs:range :Project .
+
+
+###  http://www.uponto.link/ontology/#hasActualCost
+:hasActualCost rdf:type owl:ObjectProperty ;
+               rdfs:domain :Status ;
+               rdfs:range :CostDefinition .
+
+
+###  http://www.uponto.link/ontology/#hasActualized
+:hasActualized rdf:type owl:ObjectProperty ;
+               rdfs:domain :CostDefinition ;
+               rdfs:range :CostDefinition .
+
+
+###  http://www.uponto.link/ontology/#hasAdjustedCost
+:hasAdjustedCost rdf:type owl:ObjectProperty ;
+                 rdfs:domain :CostDefinition ;
+                 rdfs:range :CostDefinition .
+
+
+###  http://www.uponto.link/ontology/#hasCommodity
+:hasCommodity rdf:type owl:ObjectProperty ;
+              rdfs:range :Commodity .
+
+
+###  http://www.uponto.link/ontology/#hasContract
+:hasContract rdf:type owl:ObjectProperty ;
+             rdfs:domain :Project ;
+             rdfs:range :Contract .
+
+
+###  http://www.uponto.link/ontology/#hasContractParty
+:hasContractParty rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Contract ;
+                  rdfs:range :ContractParty .
+
+
+###  http://www.uponto.link/ontology/#hasContractedResource
+:hasContractedResource rdf:type owl:ObjectProperty ;
+                       rdfs:domain :Contract ;
+                       rdfs:range :Commodity .
+
+
+###  http://www.uponto.link/ontology/#hasCountry
+:hasCountry rdf:type owl:ObjectProperty ;
+            rdfs:range :Country .
+
+
+###  http://www.uponto.link/ontology/#hasCurrency
+:hasCurrency rdf:type owl:ObjectProperty ;
+             rdfs:range :Currency .
+
+
+###  http://www.uponto.link/ontology/#hasDisclosure
+:hasDisclosure rdf:type owl:ObjectProperty ;
+               rdfs:domain :Project ;
+               rdfs:range :Disclosure .
+
+
+###  http://www.uponto.link/ontology/#hasEstimatedCost
+:hasEstimatedCost rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Status ;
+                  rdfs:range :CostDefinition .
+
+
+###  http://www.uponto.link/ontology/#hasIdentifiedContractParty
+:hasIdentifiedContractParty rdf:type owl:ObjectProperty ;
+                            rdfs:domain :Contract ;
+                            rdfs:range :Organization .
+
+
+###  http://www.uponto.link/ontology/#hasIdentity
+:hasIdentity rdf:type owl:ObjectProperty ;
+             rdfs:domain :ContractParty ;
+             rdfs:range :Organization .
+
+
+###  http://www.uponto.link/ontology/#hasInfoCard
+:hasInfoCard rdf:type owl:ObjectProperty ;
+             rdfs:domain :Project ;
+             rdfs:range :ProjectInfoCard .
+
+
+###  http://www.uponto.link/ontology/#hasOperator
+:hasOperator rdf:type owl:ObjectProperty ;
+             rdfs:domain :Project ;
+             rdfs:range :Organization .
+
+
+###  http://www.uponto.link/ontology/#hasPayment
+:hasPayment rdf:type owl:ObjectProperty ;
+            rdfs:domain :Disclosure ;
+            rdfs:range :Payment .
+
+
+###  http://www.uponto.link/ontology/#hasProduct
+:hasProduct rdf:type owl:ObjectProperty ;
+            rdfs:domain :Project ;
+            rdfs:range :Product .
+
+
+###  http://www.uponto.link/ontology/#hasReportingEntity
+:hasReportingEntity rdf:type owl:ObjectProperty ;
+                    rdfs:range :Status .
+
+
+###  http://www.uponto.link/ontology/#hasSponsor
+:hasSponsor rdf:type owl:ObjectProperty ;
+            rdfs:domain :Project ;
+            rdfs:range :Organization .
+
+
+###  http://www.uponto.link/ontology/#hasState
+:hasState rdf:type owl:ObjectProperty ;
+          rdfs:range :Country .
+
+
+###  http://www.uponto.link/ontology/#hasStatus
+:hasStatus rdf:type owl:ObjectProperty ;
+           rdfs:domain :Project ;
+           rdfs:range :Status .
+
+
+###  http://www.uponto.link/ontology/#hasUnit
+:hasUnit rdf:type owl:ObjectProperty ;
+         rdfs:range :ContractParty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.uponto.link/ontology/#atGate
+:atGate rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Status ;
+        rdfs:comment "Linking an instance of the class Status to its corresponding instance of the class Gate, that reflects where on project phasing stages the project is currently located. This property links through a blank node that collects the date with :hasDate data property." ;
+        rdfs:label "at Gate" ;
+        skos:prefLabel "at Gate" ;
+        skos:scopeNote "uponto.op.3.3" .
+
+
+###  http://www.uponto.link/ontology/#confers
+:confers rdf:type owl:DatatypeProperty .
+
+
+###  http://www.uponto.link/ontology/#costAndScheduleProperties
+:costAndScheduleProperties rdf:type owl:DatatypeProperty ;
+                           rdfs:domain [ rdf:type owl:Class ;
+                                         owl:unionOf ( :CostDefinition
+                                                       :ProjectInfoCard
+                                                     )
+                                       ] ;
+                           rdfs:comment "This is a superclass data property corresponding to cost instance detailed properties, cost group percentages, and specifics of man-hours. These properties reflect estimated cost, or the actual cost depending. They as well can be directly describe the Project instances." ;
+                           rdfs:label "cost And Schedule Properties" ;
+                           skos:prefLabel "Cost And Schedule Properties" ;
+                           skos:scopeNote "uponto.dp.10.0" .
+
+
+###  http://www.uponto.link/ontology/#costIndices
+:costIndices rdf:type owl:DatatypeProperty ;
+             rdfs:domain :CostDefinition ;
+             rdfs:comment "This is a superclass data property corresponding to cost instance specification of reference indices and rates." ;
+             rdfs:label "cost Indices" ;
+             skos:prefLabel "Cost Indices" ;
+             skos:scopeNote "uponto.dp.9.0" .
+
+
+###  http://www.uponto.link/ontology/#dateDurationCommissioning
+:dateDurationCommissioning rdf:type owl:DatatypeProperty ;
+                           rdfs:subPropertyOf :definitionProperties ;
+                           rdfs:domain :ProjectInfoCard ;
+                           rdfs:range xsd:duration ;
+                           rdfs:comment "The duration of the both primary and secondary commissioning of the project in rounded total number of months." ;
+                           rdfs:label "date Duration Commissioning" ;
+                           skos:prefLabel "Duration Commissioning" ;
+                           skos:scopeNote "uponto.dp.3.8" .
+
+
+###  http://www.uponto.link/ontology/#dateDurationPaybackPeriod
+:dateDurationPaybackPeriod rdf:type owl:DatatypeProperty ;
+                           rdfs:subPropertyOf :projectFinancialProperties ;
+                           rdfs:domain [ rdf:type owl:Class ;
+                                         owl:unionOf ( :CostDefinition
+                                                       :ProjectInfoCard
+                                                     )
+                                       ] ;
+                           rdfs:range xsd:duration ;
+                           rdfs:comment "The project financing payback period in total number of years." ;
+                           rdfs:label "date Duration Payback Period " ;
+                           skos:prefLabel "Duration Payback Period " ;
+                           skos:scopeNote "uponto.dp.11.1" .
+
+
+###  http://www.uponto.link/ontology/#dateDurationPhase2
+:dateDurationPhase2 rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :definitionProperties ;
+                    rdfs:domain :ProjectInfoCard ;
+                    rdfs:range xsd:duration ;
+                    rdfs:comment "The duration of the second phase of the project in rounded total number of months." ;
+                    rdfs:label "date Duration Phase 2  " ;
+                    skos:prefLabel "Duration Phase 2  " ;
+                    skos:scopeNote "uponto.dp.3.4" .
+
+
+###  http://www.uponto.link/ontology/#dateDurationPhase3
+:dateDurationPhase3 rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :definitionProperties ;
+                    rdfs:domain :ProjectInfoCard ;
+                    rdfs:range xsd:duration ;
+                    rdfs:comment "The duration of the third phase of the project in rounded total number of months." ;
+                    rdfs:label "date Duration Phase 3" ;
+                    skos:prefLabel "Duration Phase 3" ;
+                    skos:scopeNote "uponto.dp.3.5" .
+
+
+###  http://www.uponto.link/ontology/#dateDurationPhase4Construction
+:dateDurationPhase4Construction rdf:type owl:DatatypeProperty ;
+                                rdfs:subPropertyOf :definitionProperties ;
+                                rdfs:domain :ProjectInfoCard ;
+                                rdfs:range xsd:duration ;
+                                rdfs:comment "The duration of the construction phase of the project in rounded total number of months." ;
+                                rdfs:label "date Duration Phase 4 Construction" ;
+                                skos:prefLabel "Duration Phase 4 Construction" ;
+                                skos:scopeNote "uponto.dp.3.7" .
+
+
+###  http://www.uponto.link/ontology/#dateDurationPhase4Engineering
+:dateDurationPhase4Engineering rdf:type owl:DatatypeProperty ;
+                               rdfs:subPropertyOf :definitionProperties ;
+                               rdfs:domain :ProjectInfoCard ;
+                               rdfs:range xsd:duration ;
+                               dcterms:source "<a href=\"https://onlinelibrary.wiley.com/doi/book/10.1002/9781119201045\" target=\"_blank\"> Merrow 2011.</a> Industrial Megaprojects: Concepts, Strategies, and Practices for Success." ;
+                               rdfs:comment "The duration of the detailed engineering of the project in rounded total number of months. The detailed engineering is considered complete when more than 90% of the engineering staff are demobilised from the project (Merrow, 2011). " ;
+                               rdfs:label "date Duration Phase 4 Engineering" ;
+                               skos:prefLabel "Duration Phase 4 Engineering" ;
+                               skos:scopeNote "uponto.dp.3.6" .
+
+
+###  http://www.uponto.link/ontology/#dateDurationProjectLife
+:dateDurationProjectLife rdf:type owl:DatatypeProperty ;
+                         rdfs:subPropertyOf :projectFinancialProperties ;
+                         rdfs:domain [ rdf:type owl:Class ;
+                                       owl:unionOf ( :CostDefinition
+                                                     :ProjectInfoCard
+                                                   )
+                                     ] ;
+                         rdfs:range xsd:duration ;
+                         rdfs:comment "The project design life in total number of years." ;
+                         rdfs:label "date Duration Project Life" ;
+                         owl:equivalentProperty "https://www.rics.org/rics-icms-1.1.xsd#designLifeInYears" ;
+                         skos:prefLabel "Duration Project Life" ;
+                         skos:scopeNote "uponto.dp.11.2" .
+
+
+###  http://www.uponto.link/ontology/#dateDurationProjectTotal
+:dateDurationProjectTotal rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf :projectMainDataProperties ;
+                          rdfs:domain :Project ;
+                          rdfs:range xsd:duration ;
+                          rdfs:comment "Total duration of the project execution phase and commissioning." ;
+                          rdfs:label "date Duration Project Total " ;
+                          owl:equivalentProperty "https://www.rics.org/rics-icms-1.1.xsd#duration" ;
+                          skos:prefLabel "Total Project Duration " ;
+                          skos:scopeNote "uponto.dp.1.8" .
+
+
+###  http://www.uponto.link/ontology/#dateDurationRampUp
+:dateDurationRampUp rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :definitionProperties ;
+                    rdfs:domain :ProjectInfoCard ;
+                    rdfs:range xsd:duration ;
+                    rdfs:comment "The duration of the ramp up of the project to achieve nameplate production capacity or operational satisfactory capacity in rounded total number of months." ;
+                    rdfs:label "date Duration Ramp Up" ;
+                    skos:prefLabel "Duration Ramp Up" ;
+                    skos:scopeNote "uponto.dp.3.9" .
+
+
+###  http://www.uponto.link/ontology/#definitionProperties
+:definitionProperties rdf:type owl:DatatypeProperty ;
+                      rdfs:domain :ProjectInfoCard ;
+                      rdfs:comment "This is a superclass data property corresponding to project definition benchmarking. These properties include the percentage of the cost of early phases of the project, specific dates and project shaping properties." ;
+                      rdfs:label "definition Properties" ;
+                      skos:prefLabel "Project Definition Properties" ;
+                      skos:scopeNote "uponto.dp.3.0" .
+
+
+###  http://www.uponto.link/ontology/#enviromentalConstraints
+:enviromentalConstraints rdf:type owl:DatatypeProperty ;
+                         rdfs:subPropertyOf :projectClimateAccessPermitting ;
+                         rdfs:domain :ProjectInfoCard ;
+                         rdfs:range xsd:decimal ;
+                         rdfs:comment "A qualitative index rating the predictable seasonal effects, such as cold winter, or rain seasons; on a discrete Likert scale between 0, to 10, with 10 being the best." ;
+                         rdfs:label "index Environmental Constraints" ;
+                         owl:equivalentProperty "https://www.rics.org/rics-icms-1.1.xsd#enviromentalConstraints" ;
+                         skos:prefLabel "Environmental Constraints" ;
+                         skos:scopeNote "uponto.dp.6.6" .
+
+
+###  http://www.uponto.link/ontology/#extremeClimateConditions
+:extremeClimateConditions rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf :projectClimateAccessPermitting ;
+                          rdfs:domain :ProjectInfoCard ;
+                          rdfs:range xsd:decimal ;
+                          rdfs:comment "A qualitative index rating the prevalence of seasonal unpredicted weather effects, such as tornados, tsunamis (not merely earthquakes), and forest fires; on a discrete Likert scale between 0, to 10, with 10 being the best." ;
+                          rdfs:label "index Extreme Climatic Conditions" ;
+                          owl:equivalentProperty "https://www.rics.org/rics-icms-1.1.xsd#extremeClimateConditions" ;
+                          skos:prefLabel "Extreme Climatic Conditions" ;
+                          skos:scopeNote "uponto.dp.6.5" .
+
+
+###  http://www.uponto.link/ontology/#fromGate
+:fromGate rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Status ;
+          rdfs:comment "Linking an instance of the class Status to its corresponding instance of the class Gate, that reflects from which point on project phasing stages the cost spending, corresponding to either an estimate or an actual cost instance, is started. This property links through a blank node that collects the date with :hasDate data property." ;
+          rdfs:label "from Gate" ;
+          skos:prefLabel "from Gate" ;
+          skos:scopeNote "uponto.op.3.4" .
+
+
+###  http://www.uponto.link/ontology/#gate
+:gate rdf:type owl:DatatypeProperty ;
+      rdfs:comment "Linking blank node instances of :atGate, :fromGate, and :untilGate to their corresponding instances of the class Gate." ;
+      rdfs:label "gate" ;
+      skos:prefLabel "gate" ;
+      skos:scopeNote "uponto.op.3.6" .
+
+
+###  http://www.uponto.link/ontology/#hasActualCost
+:hasActualCost rdf:type owl:DatatypeProperty .
+
+
+###  http://www.uponto.link/ontology/#hasActualProjectCostinUSDTotal
+:hasActualProjectCostinUSDTotal rdf:type owl:DatatypeProperty ;
+                                rdfs:subPropertyOf :projectMainDataProperties ;
+                                rdfs:domain :Project ;
+                                rdfs:range xsd:decimal ;
+                                rdfs:comment "Total project cost in the current United States dollars at the time of completion with out any normalization other than for exchange rate." ;
+                                rdfs:label "has Actual Project Cost in USD Total" ;
+                                skos:prefLabel "Total Project Cost in USD (Actual)" ;
+                                skos:scopeNote "uponto.dp.1.9" .
+
+
+###  http://www.uponto.link/ontology/#hasActualized
+:hasActualized rdf:type owl:DatatypeProperty .
+
+
+###  http://www.uponto.link/ontology/#hasAdjustedCost
+:hasAdjustedCost rdf:type owl:DatatypeProperty .
+
+
+###  http://www.uponto.link/ontology/#hasBuildingSector
+:hasBuildingSector rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf :projectMainDataProperties ;
+                   rdfs:domain :Project ;
+                   rdfs:range xsd:string ;
+                   dcterms:source "<a href=\"https://www.construction-institute.org/resources/knowledgebase/best-practices/benchmarking-metrics\" target=\"_blank\"> Construction Industry Institute (CII) 2020.</a> Benchmarking & Metrics." ;
+                   rdfs:comment "Categorizing building projects to: Communications Center, Courthouse, Low rise Residential, High rise Residential, Embassy, Low rise Office, High rise Office, Hospital, Laboratory, Maintenance Facilities, Movie Theatre, Parking Garage, Physical Fitness Center, Prison, Restaurant/Nightclub, Retail Commercial, School, Warehouse." ;
+                   rdfs:label "has Building Sector " ;
+                   owl:equivalentProperty "https://www.rics.org/rics-icms-1.1.xsd#hasKnownProjectDescriptionEnum" ;
+                   skos:prefLabel "Building Sector " ;
+                   skos:scopeNote "uponto.dp.1.3" .
+
+
+###  http://www.uponto.link/ontology/#hasCertianty
+:hasCertianty rdf:type owl:DatatypeProperty ;
+              rdfs:range xsd:decimal ;
+              dcterms:source "http://ontology.eil.utoronto.ca/kp.owl#assigned_Certainty_Degree" ;
+              rdfs:comment "General data property that describes the certainty of provided data as a percentage index for any entity or organization that has been the object of hasReportingEntity property." ;
+              rdfs:label "has Certianty" ;
+              skos:prefLabel "has Certainty" ;
+              skos:scopeNote "uponto.dp.0.6" .
+
+
+###  http://www.uponto.link/ontology/#hasChangeInEngineeringFirmPhase3To4
+:hasChangeInEngineeringFirmPhase3To4 rdf:type owl:DatatypeProperty ;
+                                     rdfs:subPropertyOf :definitionProperties ;
+                                     rdfs:domain :ProjectInfoCard ;
+                                     rdfs:range xsd:boolean ;
+                                     rdfs:comment "Boolean value noting whether or not the main engineering firm has changed from phase 3 to phase 4." ;
+                                     rdfs:label "has Change In Engineering Firm Phase 3 To 4" ;
+                                     skos:prefLabel "Change In Engineering Firm Phase 3 To 4" ;
+                                     skos:scopeNote "uponto.dp.3.31" .
+
+
+###  http://www.uponto.link/ontology/#hasClosestCity
+:hasClosestCity rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf :projectMainDataProperties ;
+                rdfs:domain :Project ;
+                rdfs:range xsd:string ;
+                rdfs:comment "The closest city or population center to the project." ;
+                rdfs:label "has Closest City" ;
+                skos:prefLabel "Closest City" ;
+                skos:scopeNote "uponto.dp.1.13" .
+
+
+###  http://www.uponto.link/ontology/#hasCommodity
+:hasCommodity rdf:type owl:DatatypeProperty .
+
+
+###  http://www.uponto.link/ontology/#hasContract
+:hasContract rdf:type owl:DatatypeProperty .
+
+
+###  http://www.uponto.link/ontology/#hasContractParty
+:hasContractParty rdf:type owl:DatatypeProperty .
+
+
+###  http://www.uponto.link/ontology/#hasContractType
+:hasContractType rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf :projectContractProperties ,
+                                    :projectMainDataProperties ;
+                 rdfs:domain :Contract ,
+                             :Project ;
+                 rdfs:range xsd:string ;
+                 rdfs:comment "Categorizing contracts types to: EPC Lump Sum, EPCm, IPD Alliances, Mixed Contracting." ,
+                              "Specifying the type of contract that is signed between parties about the Project instance." ;
+                 rdfs:label "has Contract Type" ;
+                 owl:equivalentProperty "https://www.rics.org/rics-icms-1.1.xsd#modeOfProcurement" ;
+                 skos:prefLabel "Contract Type" ;
+                 skos:scopeNote "uponto.dp.1.7" ,
+                                "uponto.dp.13.2" .
+
+
+###  http://www.uponto.link/ontology/#hasContractedResource
+:hasContractedResource rdf:type owl:DatatypeProperty .
+
+
+###  http://www.uponto.link/ontology/#hasCostAdjustedForEXandESC
+:hasCostAdjustedForEXandESC rdf:type owl:DatatypeProperty ;
+                            rdfs:subPropertyOf :projectAdjustedCostProperties ;
+                            rdfs:domain :CostDefinition ;
+                            rdfs:range xsd:decimal ;
+                            rdfs:comment "The value of the adjusted cost instance normalised to exchange rate and escalation." ;
+                            rdfs:label "has Cost Adjusted For EX and ESC" ;
+                            skos:prefLabel "Cost Adjusted For EX and ESC" ;
+                            skos:scopeNote "uponto.dp.8.3" .
+
+
+###  http://www.uponto.link/ontology/#hasCostAdjustedForEXandINF
+:hasCostAdjustedForEXandINF rdf:type owl:DatatypeProperty ;
+                            rdfs:subPropertyOf :projectAdjustedCostProperties ;
+                            rdfs:domain :CostDefinition ;
+                            rdfs:range xsd:decimal ;
+                            rdfs:comment "The value of the adjusted cost instance normalised for exchange rate and inflation." ;
+                            rdfs:label "has Cost Adjusted For EX and INF" ;
+                            skos:prefLabel "Cost Adjusted For EX and INF" ;
+                            skos:scopeNote "uponto.dp.8.1" .
+
+
+###  http://www.uponto.link/ontology/#hasCostAdjustedForPPPandESC
+:hasCostAdjustedForPPPandESC rdf:type owl:DatatypeProperty ;
+                             rdfs:subPropertyOf :projectAdjustedCostProperties ;
+                             rdfs:domain :CostDefinition ;
+                             rdfs:range xsd:decimal ;
+                             rdfs:comment "The value of the adjusted cost instance normalised to purchasing power parity and escalation." ;
+                             rdfs:label "has Cost Adjusted For PPP and ESC" ;
+                             skos:prefLabel "Cost Adjusted For PPP and ESC" ;
+                             skos:scopeNote "uponto.dp.8.4" .
+
+
+###  http://www.uponto.link/ontology/#hasCostAdjustedForPPPandINF
+:hasCostAdjustedForPPPandINF rdf:type owl:DatatypeProperty ;
+                             rdfs:subPropertyOf :projectAdjustedCostProperties ;
+                             rdfs:domain :CostDefinition ;
+                             rdfs:range xsd:decimal ;
+                             rdfs:comment "The value of the adjusted cost instance normalised for purchasing power parity and inflation." ;
+                             rdfs:label "has Cost Adjusted For PPP and INF" ;
+                             skos:prefLabel "Cost Adjusted For PPP and INF" ;
+                             skos:scopeNote "uponto.dp.8.2" .
+
+
+###  http://www.uponto.link/ontology/#hasCostScope
+:hasCostScope rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf :projectCostDataProperties ;
+              rdfs:domain :CostDefinition ;
+              rdfs:range xsd:string ;
+              rdfs:comment "Specifying the scope of the cost instance to Engineering, Procurement, Construction, Construction Management, or any of their combinations with corresponding abbreviation letters of: E, P, C, EPC, EPCM, ..." ;
+              rdfs:label "has Cost Scope" ;
+              skos:prefLabel "has Cost Scope" ;
+              skos:scopeNote "uponto.dp.7.1" .
+
+
+###  http://www.uponto.link/ontology/#hasCountry
+:hasCountry rdf:type owl:DatatypeProperty .
+
+
+###  http://www.uponto.link/ontology/#hasCurrency
+:hasCurrency rdf:type owl:DatatypeProperty .
+
+
+###  http://www.uponto.link/ontology/#hasCurrentCostOverrunprcnt
+:hasCurrentCostOverrunprcnt rdf:type owl:DatatypeProperty ;
+                            rdfs:subPropertyOf :projectMainDataProperties ;
+                            rdfs:domain :Project ;
+                            rdfs:range xsd:decimal ;
+                            rdfs:comment "Percentage of cost overrun in current currency value at completion and without accounting for inflation, escalation, and changes in currency purchasing power; calculated as actual cost at completion divided by the estimated cost." ;
+                            rdfs:label "has Current Cost Overrun prcnt" ;
+                            skos:prefLabel "Percentage Cost Overrun (Current at Completion)" ;
+                            skos:scopeNote "uponto.dp.1.10" .
+
+
+###  http://www.uponto.link/ontology/#hasDate
+:hasDate rdf:type owl:DatatypeProperty ;
+         rdfs:range xsd:date ;
+         rdfs:comment "General data property, For Contract class: the signature date For Status class linking through blank nodes to Gate class: the actual or estimated date at, from, until the corresponding Gate. For estimated instance of Cost class: the estimate basis date. For actual instance of Cost class: the completion payment date. For normalised instance of Adjusted Cost class: the reference date. For Document class: the published date." ;
+         rdfs:label "has Date" ;
+         skos:prefLabel "has Date" ;
+         skos:scopeNote "uponto.dp.0.1" .
+
+
+###  http://www.uponto.link/ontology/#hasDisclosure
+:hasDisclosure rdf:type owl:DatatypeProperty .
+
+
+###  http://www.uponto.link/ontology/#hasDistancetoClosestCity
+:hasDistancetoClosestCity rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf :projectMainDataProperties ;
+                          rdfs:domain :Project ;
+                          rdfs:range xsd:string ;
+                          rdfs:comment "The distance of the closest city or population center to the project (in Kilometers)." ;
+                          rdfs:label "has Distance to Closest City" ;
+                          skos:prefLabel "Distance to Closest City" ;
+                          skos:scopeNote "uponto.dp.1.14" .
+
+
+###  http://www.uponto.link/ontology/#hasEndDate
+:hasEndDate rdf:type owl:DatatypeProperty ;
+            rdfs:range xsd:date ;
+            rdfs:comment "General data property, For Project class: the project main construction finish date. For Payment class: the end date of the duration of service, for which the payment is made." ;
+            rdfs:label "has End Date" ;
+            skos:prefLabel "has End Date" ;
+            skos:scopeNote "uponto.dp.0.3" .
+
+
+###  http://www.uponto.link/ontology/#hasEstimateBasisRating
+:hasEstimateBasisRating rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf :projectRatingProperties ;
+                        rdfs:domain :Status ;
+                        rdfs:range xsd:decimal ;
+                        dcterms:source "<a href=\"http://www.decisions-books.com/PRQ\" target=\"_blank\"> Hollmann 2016.</a> Project Risk Quantification, A Practitioner's Guide to Realistic Cost and Schedule Risk Management." ;
+                        rdfs:comment "Estimate Basis is a measure of the quality of the underlying estimate and estimating functions for both cost and schedule. It is a qualitative measure for factors such as: Experience in estimating similar projects, Documented and followed estimating strategy, and, Thorough basis for the estimate. This is to be calculated as the percentage of the specific project rate to the highest possible rating, depending on the rating scheme." ;
+                        rdfs:label "has Estimate Basis Rating" ;
+                        skos:prefLabel "Estimate Basis Rating" ;
+                        skos:scopeNote "uponto.dp.12.2" .
+
+
+###  http://www.uponto.link/ontology/#hasEstimateClass
+:hasEstimateClass rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf :costAndScheduleProperties ;
+                  rdfs:domain [ rdf:type owl:Class ;
+                                owl:unionOf ( :CostDefinition
+                                              :ProjectInfoCard
+                                            )
+                              ] ;
+                  rdfs:range xsd:integer ;
+                  dcterms:source "<a href=\"https://web.aacei.org/docs/default-source/rps/10s-90.pdf\" target=\"_blank\"> Association for the Advancement of Cost Engineering (AACE) 2019.</a> Cost Engineering Terminology." ;
+                  rdfs:comment "As defined by AACE, the estimate class designations that follow the labeled Class 1, 2, 3, 4, and 5. A Class 5 estimate is based upon the lowest level of project definition, and a Class 1 estimate is closest to full project definition and maturity." ;
+                  rdfs:label "has Estimate Class" ;
+                  skos:prefLabel "Estimate Class" ;
+                  skos:scopeNote "uponto.dp.10.18" .
+
+
+###  http://www.uponto.link/ontology/#hasEstimatedCost
+:hasEstimatedCost rdf:type owl:DatatypeProperty .
+
+
+###  http://www.uponto.link/ontology/#hasHeavyIndustrialSector
+:hasHeavyIndustrialSector rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf :projectMainDataProperties ;
+                          rdfs:domain :Project ;
+                          rdfs:range xsd:string ;
+                          dcterms:source "<a href=\"https://www.construction-institute.org/resources/knowledgebase/best-practices/benchmarking-metrics\" target=\"_blank\"> Construction Industry Institute (CII) 2020.</a> Benchmarking & Metrics." ;
+                          rdfs:comment "Categorizing heavy industrial projects to: Chemical Manufacturing, Electric Energy, Environmental, Metals and Minerals Processing, Mining, Tailing, Natural Gas Processing, Oil/Gas Production, Oil Refining, Cogeneration, Pulp and Paper, Other Heavy Industrial." ;
+                          rdfs:label "has Heavy Industrial Sector " ;
+                          owl:equivalentProperty "https://www.rics.org/rics-icms-1.1.xsd#hasKnownProjectDescriptionEnum" ;
+                          skos:prefLabel "Heavy Industrial Sector " ;
+                          skos:scopeNote "uponto.dp.1.1" .
+
+
+###  http://www.uponto.link/ontology/#hasIRR
+:hasIRR rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf :projectFinancialProperties ;
+        rdfs:domain [ rdf:type owl:Class ;
+                      owl:unionOf ( :CostDefinition
+                                    :ProjectInfoCard
+                                  )
+                    ] ;
+        rdfs:range xsd:decimal ;
+        rdfs:comment "The internal rate of return (IRR) is a discount rate that makes the net present value (NPV) of all cash flows equal to zero. The reported IRR must correspond to baseline scenario at the project financing." ;
+        rdfs:label "has IRR" ;
+        skos:prefLabel "IRR" ;
+        skos:scopeNote "uponto.dp.11.4" .
+
+
+###  http://www.uponto.link/ontology/#hasIdentifiedContractParty
+:hasIdentifiedContractParty rdf:type owl:DatatypeProperty .
+
+
+###  http://www.uponto.link/ontology/#hasIdentity
+:hasIdentity rdf:type owl:DatatypeProperty .
+
+
+###  http://www.uponto.link/ontology/#hasInfoCard
+:hasInfoCard rdf:type owl:DatatypeProperty .
+
+
+###  http://www.uponto.link/ontology/#hasInfrastructureSector
+:hasInfrastructureSector rdf:type owl:DatatypeProperty ;
+                         rdfs:subPropertyOf :projectMainDataProperties ;
+                         rdfs:domain :Project ;
+                         rdfs:range xsd:string ;
+                         dcterms:source "<a href=\"https://www.construction-institute.org/resources/knowledgebase/best-practices/benchmarking-metrics\" target=\"_blank\"> Construction Industry Institute (CII) 2020.</a> Benchmarking & Metrics." ;
+                         rdfs:comment "Categorizing infrastructure projects to: Airport, Central Utility Plant, Electrical Distribution, Flood Control, Road and Highway, Marine Facilities, Navigation, Process Control, Rail, Tunneling, Water/Wastewater, Telecom, Wide Area Network, Pipeline, Tank farms, Gas Distribution, Other Infrastructure." ;
+                         rdfs:label "has Infrastructure Sector " ;
+                         owl:equivalentProperty "https://www.rics.org/rics-icms-1.1.xsd#hasKnownProjectDescriptionEnum" ;
+                         skos:prefLabel "Infrastructure Sector " ;
+                         skos:scopeNote "uponto.dp.1.4" .
+
+
+###  http://www.uponto.link/ontology/#hasLightIndustrialSector
+:hasLightIndustrialSector rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf :projectMainDataProperties ;
+                          rdfs:domain :Project ;
+                          rdfs:range xsd:string ;
+                          dcterms:source "<a href=\"https://www.construction-institute.org/resources/knowledgebase/best-practices/benchmarking-metrics\" target=\"_blank\"> Construction Industry Institute (CII) 2020.</a> Benchmarking & Metrics." ;
+                          rdfs:comment "Categorizing light industrial projects to: Automotive Manufacturing, Consumer Products Manufacturing, Foods, Microelectronics Manufacturing, Office Products Manufacturing, Pharmaceutical Manufacturing, Pharmaceutical Labs, Pharmaceutical Warehouse, Other Light Industrial." ;
+                          rdfs:label "has Light Industrial Sector " ;
+                          owl:equivalentProperty "https://www.rics.org/rics-icms-1.1.xsd#hasKnownProjectDescriptionEnum" ;
+                          skos:prefLabel "Light Industrial Sector " ;
+                          skos:scopeNote "uponto.dp.1.2" .
+
+
+###  http://www.uponto.link/ontology/#hasMidDate
+:hasMidDate rdf:type owl:DatatypeProperty ;
+            rdfs:range xsd:date ;
+            rdfs:comment "General data property, For Project class: the project main construction midpoint date. For Payment class: the midpoint date of the duration of service, for which the payment is made." ;
+            rdfs:label "has Mid Date" ;
+            skos:prefLabel "has Mid Date" ;
+            skos:scopeNote "uponto.dp.0.4" .
+
+
+###  http://www.uponto.link/ontology/#hasNPV
+:hasNPV rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf :projectFinancialProperties ;
+        rdfs:domain [ rdf:type owl:Class ;
+                      owl:unionOf ( :CostDefinition
+                                    :ProjectInfoCard
+                                  )
+                    ] ;
+        rdfs:range xsd:decimal ;
+        rdfs:comment "The net present value (NPV) is the difference between the present value of cash inflows and the present value of cash outflows over a period of the project design life; discounted at a specific rate. NPV must only be compared by considering the same basis discount rates. The reported NPV must correspond to baseline scenario at the project financing." ;
+        rdfs:label "has NPV" ;
+        skos:prefLabel "NPV" ;
+        skos:scopeNote "uponto.dp.11.6" .
+
+
+###  http://www.uponto.link/ontology/#hasNPVDiscountRate
+:hasNPVDiscountRate rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :projectFinancialProperties ;
+                    rdfs:domain [ rdf:type owl:Class ;
+                                  owl:unionOf ( :CostDefinition
+                                                :ProjectInfoCard
+                                              )
+                                ] ;
+                    rdfs:range xsd:decimal ;
+                    rdfs:comment "The discount rate used in calculation of the NPV." ;
+                    rdfs:label "has NPV Discount Rate" ;
+                    skos:prefLabel "NPV Discount Rate" ;
+                    skos:scopeNote "uponto.dp.11.7" .
+
+
+###  http://www.uponto.link/ontology/#hasOSHADARTRate
+:hasOSHADARTRate rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf :projectLaborAndSafetyDataProperties ;
+                 rdfs:domain :ProjectInfoCard ;
+                 rdfs:range xsd:decimal ;
+                 dcterms:source "<a href=\"https://www.osha.gov/pls/oshaweb/owadisp.show_document?p_table=directives&p_id=3205\" target=\"_blank\"> Occupational Safety and Health Administration (OSHA) 2004.</a> Insturction. CPL 02-00-135.  Recordkeeping Policies and Procedures Manual." ;
+                 rdfs:comment "a mathematical calculation that describes the number of recordable incidents per 100 full time employees that resulted in lost or restricted days or job transfer due to work related injuries or illnesses." ;
+                 rdfs:label "has OSHA DART Rate" ;
+                 skos:prefLabel "OSHA DART Rate" ;
+                 skos:scopeNote "uponto.dp.4.13" .
+
+
+###  http://www.uponto.link/ontology/#hasOSHALostTimeCaseRate
+:hasOSHALostTimeCaseRate rdf:type owl:DatatypeProperty ;
+                         rdfs:subPropertyOf :projectLaborAndSafetyDataProperties ;
+                         rdfs:domain :ProjectInfoCard ;
+                         rdfs:range xsd:decimal ;
+                         dcterms:source "<a href=\"https://www.osha.gov/pls/oshaweb/owadisp.show_document?p_table=directives&p_id=3205\" target=\"_blank\"> Occupational Safety and Health Administration (OSHA) 2004.</a> Insturction. CPL 02-00-135.  Recordkeeping Policies and Procedures Manual." ;
+                         rdfs:comment "a mathematical calculation that describes the number of lost time cases per 100 full-time employees in any given time frame." ;
+                         rdfs:label "has OSHA Lost Time Case Rate" ;
+                         skos:prefLabel "OSHA Lost Time Case Rate" ;
+                         skos:scopeNote "uponto.dp.4.10" .
+
+
+###  http://www.uponto.link/ontology/#hasOSHALostWorkdayRate
+:hasOSHALostWorkdayRate rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf :projectLaborAndSafetyDataProperties ;
+                        rdfs:domain :ProjectInfoCard ;
+                        rdfs:range xsd:decimal ;
+                        dcterms:source "<a href=\"https://www.osha.gov/pls/oshaweb/owadisp.show_document?p_table=directives&p_id=3205\" target=\"_blank\"> Occupational Safety and Health Administration (OSHA) 2004.</a> Insturction. CPL 02-00-135.  Recordkeeping Policies and Procedures Manual." ;
+                        rdfs:comment "a mathematical calculation that describes the number of lost workdays per 100 full-time employees in any given time frame." ;
+                        rdfs:label "has OSHA Lost Workday Rate" ;
+                        skos:prefLabel "OSHA Lost Workday Rate" ;
+                        skos:scopeNote "uponto.dp.4.11" .
+
+
+###  http://www.uponto.link/ontology/#hasOSHARecordableIncidentRate
+:hasOSHARecordableIncidentRate rdf:type owl:DatatypeProperty ;
+                               rdfs:subPropertyOf :projectLaborAndSafetyDataProperties ;
+                               rdfs:domain :ProjectInfoCard ;
+                               rdfs:range xsd:decimal ;
+                               dcterms:source "<a href=\"https://www.osha.gov/pls/oshaweb/owadisp.show_document?p_table=directives&p_id=3205\" target=\"_blank\"> Occupational Safety and Health Administration (OSHA) 2004.</a> Insturction. CPL 02-00-135.  Recordkeeping Policies and Procedures Manual." ;
+                               rdfs:comment "a mathematical calculation that describes the number of employees per 100 full-time employees that have been involved in a recordable injury or illness." ;
+                               rdfs:label "has OSHA Recordable Incident Rate" ;
+                               skos:prefLabel "OSHA Recordable Incident Rate" ;
+                               skos:scopeNote "uponto.dp.4.8" .
+
+
+###  http://www.uponto.link/ontology/#hasOSHASeverityRate
+:hasOSHASeverityRate rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf :projectLaborAndSafetyDataProperties ;
+                     rdfs:domain :ProjectInfoCard ;
+                     rdfs:range xsd:decimal ;
+                     dcterms:source "<a href=\"https://www.osha.gov/pls/oshaweb/owadisp.show_document?p_table=directives&p_id=3205\" target=\"_blank\"> Occupational Safety and Health Administration (OSHA) 2004.</a> Insturction. CPL 02-00-135.  Recordkeeping Policies and Procedures Manual." ;
+                     rdfs:comment "a mathematical calculation that describes the number of lost days experienced as compared to the number of incidents experienced." ;
+                     rdfs:label "has OSHA Severity Rate" ;
+                     skos:prefLabel "OSHA Severity Rate" ;
+                     skos:scopeNote "uponto.dp.4.12" .
+
+
+###  http://www.uponto.link/ontology/#hasOSHATotalIncidentRate
+:hasOSHATotalIncidentRate rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf :projectLaborAndSafetyDataProperties ;
+                          rdfs:domain :ProjectInfoCard ;
+                          rdfs:range xsd:decimal ;
+                          dcterms:source "<a href=\"https://www.osha.gov/pls/oshaweb/owadisp.show_document?p_table=directives&p_id=3205\" target=\"_blank\"> Occupational Safety and Health Administration (OSHA) 2004.</a> Insturction. CPL 02-00-135.  Recordkeeping Policies and Procedures Manual." ;
+                          rdfs:comment "a mathematical calculation that describes the number of recordable incident per 100 full-time employees in any given time frame." ;
+                          rdfs:label "has OSHA Total Incident Rate" ;
+                          skos:prefLabel "OSHA Total Incident Rate" ;
+                          skos:scopeNote "uponto.dp.4.9" .
+
+
+###  http://www.uponto.link/ontology/#hasOperator
+:hasOperator rdf:type owl:DatatypeProperty .
+
+
+###  http://www.uponto.link/ontology/#hasPayment
+:hasPayment rdf:type owl:DatatypeProperty .
+
+
+###  http://www.uponto.link/ontology/#hasProduct
+:hasProduct rdf:type owl:DatatypeProperty .
+
+
+###  http://www.uponto.link/ontology/#hasProjectControlsRating
+:hasProjectControlsRating rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf :projectRatingProperties ;
+                          rdfs:domain :Status ;
+                          rdfs:range xsd:decimal ;
+                          dcterms:source "<a href=\"http://www.decisions-books.com/PRQ\" target=\"_blank\"> Hollmann 2016.</a> Project Risk Quantification, A Practitioner's Guide to Realistic Cost and Schedule Risk Management." ;
+                          rdfs:comment "Project Controls portrays the robustness and strength of project control practices. It is a qualitative measure for parameters such as: Reporting Frequency, Strength and Organization of change management procedures, and, Project control plan for all functions.  This is to be calculated as the percentage of the specific project rate to the highest possible rating, depending on the rating scheme." ;
+                          rdfs:label "has Project Controls Rating" ;
+                          skos:prefLabel "Project Controls Rating" ;
+                          skos:scopeNote "uponto.dp.12.3" .
+
+
+###  http://www.uponto.link/ontology/#hasProjectType
+:hasProjectType rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf :projectMainDataProperties ;
+                rdfs:domain :Project ;
+                rdfs:range xsd:string ;
+                rdfs:comment "Categorizing project types based on their history to Greenfield, Brownfield, Greenfield Expansion." ;
+                rdfs:label "has Project Type " ;
+                owl:equivalentProperty "https://www.rics.org/rics-icms-1.1.xsd#stateOfUse" ;
+                skos:prefLabel "Project Type " ;
+                skos:scopeNote "uponto.dp.1.5" .
+
+
+###  http://www.uponto.link/ontology/#hasProjectTypeInSector
+:hasProjectTypeInSector rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf :projectMainDataProperties ;
+                        rdfs:domain :Project ;
+                        rdfs:range xsd:string ;
+                        rdfs:comment "Further categorizing project types in specific sector. For mining projects includes: Underground, Open-pit." ;
+                        rdfs:label "has Project Type In Sector" ;
+                        skos:prefLabel "Project Type In Sector" ;
+                        skos:scopeNote "uponto.dp.1.6" .
+
+
+###  http://www.uponto.link/ontology/#hasRealCostOverrun
+:hasRealCostOverrun rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :projectMainDataProperties ;
+                    rdfs:domain :Project ;
+                    rdfs:range xsd:decimal ;
+                    rdfs:comment "Percentage of cost overrun in real currency value at sanction/estimation basis date by accounting for inflation as declared at project midpoint by the appropriate jurisdiction, or an average inflation rate during the project; calculated as actual cost at completion normalised for inflation divided by the estimated cost." ;
+                    rdfs:label "has Real Cost Overrun" ;
+                    skos:prefLabel "Percentage Cost Overrun (Real)" ;
+                    skos:scopeNote "uponto.dp.1.11" .
+
+
+###  http://www.uponto.link/ontology/#hasReportingEntity
+:hasReportingEntity rdf:type owl:DatatypeProperty .
+
+
+###  http://www.uponto.link/ontology/#hasReportingSource
+:hasReportingSource rdf:type owl:DatatypeProperty ;
+                    rdfs:comment "General object property that links any instance to its reporting source that is usually an instance of the class Document." ;
+                    rdfs:label "has Reporting Source" ;
+                    rdfs:range 0 ;
+                    skos:prefLabel "has Reporting Source" ;
+                    skos:scopeNote "uponto.op.0.7" .
+
+
+###  http://www.uponto.link/ontology/#hasRole
+:hasRole rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf :projectContractProperties ;
+         rdfs:domain :ContractParty ;
+         rdfs:range xsd:string ;
+         dcterms:source "https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/ContractParty" ;
+         rdfs:comment "As described by fibo: provides a means for relating a person, organization, group, or other entity to a role that entity plays in some relationship and context. This property is different than the one specified by Fibo as it does only refer to the party role in contract as a string." ;
+         rdfs:label "has Role" ;
+         skos:prefLabel "Contract Party Role" ;
+         skos:scopeNote "uponto.dp.13.1" .
+
+
+###  http://www.uponto.link/ontology/#hasScheduleOverrun
+:hasScheduleOverrun rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :projectMainDataProperties ;
+                    rdfs:domain :Project ;
+                    rdfs:range xsd:decimal ;
+                    rdfs:comment "Percentage of schedule overrun from the actual project duration to the estimated project duration." ;
+                    rdfs:label "has Schedule Overrun" ;
+                    skos:prefLabel "Percentage Schedule Overrun" ;
+                    skos:scopeNote "uponto.dp.1.12" .
+
+
+###  http://www.uponto.link/ontology/#hasScopeDefinitionRating
+:hasScopeDefinitionRating rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf :projectRatingProperties ;
+                          rdfs:domain :Status ;
+                          rdfs:range xsd:decimal ;
+                          dcterms:source "<a href=\"http://www.decisions-books.com/PRQ\" target=\"_blank\"> Hollmann 2016.</a> Project Risk Quantification, A Practitioner's Guide to Realistic Cost and Schedule Risk Management." ;
+                          rdfs:comment "Scope Definition is a measure of the thoughtfulness of the gate review process. It reflects the degree to which the project is ready for the next phase by marking all the items of the gate review checklist against their ideals for each gate. This is to be calculated as the percentage of the specific project rate to the highest possible rating, depending on the rating scheme." ;
+                          rdfs:label "has Scope Definition Rating" ;
+                          skos:prefLabel "Scope Definition Rating" ;
+                          skos:scopeNote "uponto.dp.12.1" .
+
+
+###  http://www.uponto.link/ontology/#hasSponsor
+:hasSponsor rdf:type owl:DatatypeProperty .
+
+
+###  http://www.uponto.link/ontology/#hasSponsorAverageCoreTeamExperience
+:hasSponsorAverageCoreTeamExperience rdf:type owl:DatatypeProperty ;
+                                     rdfs:subPropertyOf :projectTeamDataProperties ;
+                                     rdfs:domain :ProjectInfoCard ;
+                                     rdfs:range xsd:decimal ;
+                                     rdfs:comment "The average experience of the sponsor's main team dedicated to the project." ;
+                                     rdfs:label "has Sponsor Average Core Team Experience" ;
+                                     skos:prefLabel "Sponsor Average Core Team Experience" ;
+                                     skos:scopeNote "uponto.dp.5.3" .
+
+
+###  http://www.uponto.link/ontology/#hasSponsorCoreTeamSize
+:hasSponsorCoreTeamSize rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf :projectTeamDataProperties ;
+                        rdfs:domain :ProjectInfoCard ;
+                        rdfs:range xsd:decimal ;
+                        rdfs:comment "The number of sponsor's main team dedicated to the project." ;
+                        rdfs:label "has Sponsor Core Team Size" ;
+                        skos:prefLabel "Sponsor Core Team Size" ;
+                        skos:scopeNote "uponto.dp.5.1" .
+
+
+###  http://www.uponto.link/ontology/#hasStartDate
+:hasStartDate rdf:type owl:DatatypeProperty ;
+              rdfs:range xsd:date ;
+              rdfs:comment "General data property, For Project class: the project main construction start date. For Payment class: the start date of the duration of service, for which the payment is made." ;
+              rdfs:label "has Start Date" ;
+              skos:prefLabel "has Start Date" ;
+              skos:scopeNote "uponto.dp.0.2" .
+
+
+###  http://www.uponto.link/ontology/#hasState
+:hasState rdf:type owl:DatatypeProperty .
+
+
+###  http://www.uponto.link/ontology/#hasStatus
+:hasStatus rdf:type owl:DatatypeProperty .
+
+
+###  http://www.uponto.link/ontology/#hasTeamDevelopmentRating
+:hasTeamDevelopmentRating rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf :projectRatingProperties ;
+                          rdfs:domain :Status ;
+                          rdfs:range xsd:decimal ;
+                          dcterms:source "<a href=\"http://www.decisions-books.com/PRQ\" target=\"_blank\"> Hollmann 2016.</a> Project Risk Quantification, A Practitioner's Guide to Realistic Cost and Schedule Risk Management." ;
+                          rdfs:comment "Team Development is a measure of the specifics of the team in charge of the project. It is a qualitative measure for factors such as Team awareness of project priorities and objectives, Defined roles and responsibilities, and Organizational continuity (i.e., significant changes in project team during the project).  This is to be calculated as the percentage of the specific project rate to the highest possible rating, depending on the rating scheme." ;
+                          rdfs:label "has Team Development Rating" ;
+                          skos:prefLabel "Team Development Rating" ;
+                          skos:scopeNote "uponto.dp.12.4" .
+
+
+###  http://www.uponto.link/ontology/#hasTerrainType
+:hasTerrainType rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf :projectMainDataProperties ;
+                rdfs:domain :Project ;
+                rdfs:range xsd:integer ;
+                dcterms:source "<a href=\"https://link.springer.com/article/10.1186/s40645-017-0157-2\" target=\"_blank\"> Iwahashi et al. 2018.</a> Global terrain classification using 280 m DEMs: segmentation, clustering, and reclassification." ;
+                rdfs:comment "An index representing project terrain type classification, landform patterns, and the ground characteristics of land; on a discrete Likert scale between 0, to 12, as proposed by Iwahashi et al." ;
+                rdfs:label "has Terrain Type" ;
+                skos:prefLabel "Terrain Type" ;
+                skos:scopeNote "uponto.dp.1.15" .
+
+
+###  http://www.uponto.link/ontology/#hasTotalNumberOfFatalities
+:hasTotalNumberOfFatalities rdf:type owl:DatatypeProperty ;
+                            rdfs:subPropertyOf :projectLaborAndSafetyDataProperties ;
+                            rdfs:domain :ProjectInfoCard ;
+                            rdfs:range xsd:decimal ;
+                            rdfs:comment "Total number of recorded fatalities." ;
+                            rdfs:label "has Total Number Of Fatalities" ;
+                            skos:prefLabel "Total Number Of Fatalities" ;
+                            skos:scopeNote "uponto.dp.4.14" .
+
+
+###  http://www.uponto.link/ontology/#hasTotalNumberOfSiteMhrs
+:hasTotalNumberOfSiteMhrs rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf :costAndScheduleProperties ;
+                          rdfs:domain [ rdf:type owl:Class ;
+                                        owl:unionOf ( :CostDefinition
+                                                      :ProjectInfoCard
+                                                    )
+                                      ] ;
+                          rdfs:range xsd:decimal ;
+                          dcterms:source "<a href=\"https://www.construction-institute.org/resources/knowledgebase/best-practices/benchmarking-metrics\" target=\"_blank\"> Construction Industry Institute (CII) 2020.</a> Benchmarking & Metrics." ;
+                          rdfs:comment "The total number of project man-hours directly attributable to project site." ;
+                          rdfs:label "has Total Number Of Site Mhrs" ;
+                          skos:prefLabel "Total Number Of Site Man-hours" ;
+                          skos:scopeNote "uponto.dp.10.17" .
+
+
+###  http://www.uponto.link/ontology/#hasTotalProjectMhrs
+:hasTotalProjectMhrs rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf :costAndScheduleProperties ;
+                     rdfs:domain [ rdf:type owl:Class ;
+                                   owl:unionOf ( :CostDefinition
+                                                 :ProjectInfoCard
+                                               )
+                                 ] ;
+                     rdfs:range xsd:decimal ;
+                     rdfs:comment "The total number of project man-hours." ;
+                     rdfs:label "has Total Project Mhrs" ;
+                     skos:prefLabel "Total Project Man-hours" ;
+                     skos:scopeNote "uponto.dp.10.9" .
+
+
+###  http://www.uponto.link/ontology/#hasUnit
+:hasUnit rdf:type owl:DatatypeProperty .
+
+
+###  http://www.uponto.link/ontology/#hasValue
+:hasValue rdf:type owl:DatatypeProperty ;
+          rdfs:range xsd:decimal ;
+          rdfs:comment "General data property, For Cost Definition class: the actual value of the cost it its corresponding currency. For Payment class: the actual value of the payment in its corresponding currency ." ;
+          rdfs:label "has Value" ;
+          skos:prefLabel "has Value" ;
+          skos:scopeNote "uponto.dp.0.5" .
+
+
+###  http://www.uponto.link/ontology/#hasWACC
+:hasWACC rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf :projectFinancialProperties ;
+         rdfs:domain [ rdf:type owl:Class ;
+                       owl:unionOf ( :CostDefinition
+                                     :ProjectInfoCard
+                                   )
+                     ] ;
+         rdfs:range xsd:decimal ;
+         rdfs:comment "The weighted average cost of capital (WACC) is commonly referred to as the firm's cost of capital. It is dictated by the external market and not by sponsor. The WACC represents the minimum return that a company must earn on an existing asset base to satisfy its creditors, owners, and other providers of capital, or they will invest elsewhere. In absence if disclosure, WACC can be assumed as a same rate across an industry active in a jurisdiction." ;
+         rdfs:label "has WACC " ;
+         skos:prefLabel "WACC " ;
+         skos:scopeNote "uponto.dp.11.5" .
+
+
+###  http://www.uponto.link/ontology/#hasWeightedLaborProductivityAchieved
+:hasWeightedLaborProductivityAchieved rdf:type owl:DatatypeProperty ;
+                                      rdfs:subPropertyOf :projectLaborAndSafetyDataProperties ;
+                                      rdfs:domain :ProjectInfoCard ;
+                                      rdfs:range xsd:decimal ;
+                                      dcterms:source "<a href=\"https://www.nist.gov/publications/metrics-and-tools-measuring-construction-productivity-technical-and-empirical\" target=\"_blank\"> Huang et al. 2009.</a> Metrics and Tools for Measuring Construction Productivity: Technical and Empirical Considerations." ;
+                                      rdfs:comment "The actual or achieved weighted average labor productivity across all man-hour tasks." ;
+                                      rdfs:label "has Weighted Labor Productivity Achieved" ;
+                                      skos:prefLabel "Achieved Weighted Labor Productivity" ;
+                                      skos:scopeNote "uponto.dp.4.6" .
+
+
+###  http://www.uponto.link/ontology/#hasWeightedLaborProductivityAssumed
+:hasWeightedLaborProductivityAssumed rdf:type owl:DatatypeProperty ;
+                                     rdfs:subPropertyOf :projectLaborAndSafetyDataProperties ;
+                                     rdfs:domain :ProjectInfoCard ;
+                                     rdfs:range xsd:decimal ;
+                                     dcterms:source "<a href=\"https://www.nist.gov/publications/metrics-and-tools-measuring-construction-productivity-technical-and-empirical\" target=\"_blank\"> Huang et al. 2009.</a> Metrics and Tools for Measuring Construction Productivity: Technical and Empirical Considerations." ;
+                                     rdfs:comment "The estimate or assumed weighted average labor productivity across all man-hour tasks. Corresponding to project level productivity metrics." ;
+                                     rdfs:label "has Weighted Labor Productivity Assumed" ;
+                                     skos:prefLabel "Assumed Weighted Labor Productivity" ;
+                                     skos:scopeNote "uponto.dp.4.5" .
+
+
+###  http://www.uponto.link/ontology/#indexBusinessDisclosureExtent
+:indexBusinessDisclosureExtent rdf:type owl:DatatypeProperty ;
+                               rdfs:subPropertyOf :projectIndexExtractableProperties ;
+                               rdfs:domain :Project ;
+                               rdfs:range xsd:decimal ;
+                               dcterms:source "https://data.worldbank.org/indicator/IC.BUS.DISC.XQ" ;
+                               rdfs:comment "As defined by the World Bank: Business extent of disclosure index (0=less disclosure to 10=more disclosure)" ;
+                               rdfs:label "index Business Disclosure Extent" ;
+                               skos:prefLabel "Business Disclosure Extent Index" ;
+                               skos:scopeNote "uponto.dp.2.10" .
+
+
+###  http://www.uponto.link/ontology/#indexCivilSecurity
+:indexCivilSecurity rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :projectIndexExtractableProperties ;
+                    rdfs:domain :Project ;
+                    rdfs:range xsd:decimal ;
+                    rdfs:comment "An index representing Civil Security at the project jurisdiction. " ;
+                    rdfs:label "index Civil Security" ;
+                    skos:prefLabel "Civil Security Index " ;
+                    skos:scopeNote "uponto.dp.2.1" .
+
+
+###  http://www.uponto.link/ontology/#indexCorruptionPI
+:indexCorruptionPI rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf :projectIndexExtractableProperties ;
+                   rdfs:domain :Project ;
+                   rdfs:range xsd:decimal ;
+                   dcterms:source "https://www.transparency.org/en/cpi#" ;
+                   rdfs:comment "Corruption Perception (CPI) index offered by the transparency international. The CPI was proved to have significant correlation with project outcomes (Merrow, 2012)." ;
+                   rdfs:label "index  Corruption PI" ;
+                   skos:prefLabel "Corruption Perception Index" ;
+                   skos:scopeNote "uponto.dp.2.4" .
+
+
+###  http://www.uponto.link/ontology/#indexCountryInflation
+:indexCountryInflation rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf :projectIndexExtractableProperties ;
+                       rdfs:domain :Project ;
+                       rdfs:range xsd:decimal ;
+                       dcterms:source "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG" ;
+                       rdfs:comment "The host country inflation rate in its original currency. Regardless of the cost percentage in host currency, this is to investigate the effect of inflation on project outcomes." ;
+                       rdfs:label "index Country Inflation" ;
+                       skos:prefLabel "Country Inflation" ;
+                       skos:scopeNote "uponto.dp.2.5" .
+
+
+###  http://www.uponto.link/ontology/#indexCountryRiskLendingPremium
+:indexCountryRiskLendingPremium rdf:type owl:DatatypeProperty ;
+                                rdfs:subPropertyOf :projectIndexExtractableProperties ;
+                                rdfs:domain :Project ;
+                                rdfs:range xsd:decimal ;
+                                dcterms:source "https://data.worldbank.org/indicator/FR.INR.RISK" ;
+                                rdfs:comment "As defined by the World Bank: Risk premium on lending (lending rate minus treasury bill rate, %)." ;
+                                rdfs:label "index  Country Risk Lending Premium" ;
+                                skos:prefLabel "Country Risk Lending Premium" ;
+                                skos:scopeNote "uponto.dp.2.6" .
+
+
+###  http://www.uponto.link/ontology/#indexCurrencyExchangeRateToUSD
+:indexCurrencyExchangeRateToUSD rdf:type owl:DatatypeProperty ;
+                                rdfs:subPropertyOf :costIndices ;
+                                rdfs:domain :CostDefinition ;
+                                rdfs:range xsd:decimal ;
+                                rdfs:comment "The exchange rate of the cost instance currency to the United States Dollars (/USD) on the cost date, or average during the cost date year." ;
+                                rdfs:label "index Currency Exchange Rate To USD " ;
+                                skos:prefLabel "Currency Exchange Rate To USD " ;
+                                skos:scopeNote "uponto.dp.9.1" .
+
+
+###  http://www.uponto.link/ontology/#indexEaseofDoingBusiness
+:indexEaseofDoingBusiness rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf :projectIndexExtractableProperties ;
+                          rdfs:domain :Project ;
+                          rdfs:range xsd:decimal ;
+                          dcterms:source "https://data.worldbank.org/indicator/IC.BUS.EASE.XQ" ;
+                          rdfs:comment "As defined by the World Bank: Ease of doing business index (1=most business-friendly regulations)" ;
+                          rdfs:label "index  Ease of Doing Business " ;
+                          skos:prefLabel "Ease of Doing Business Index" ;
+                          skos:scopeNote "uponto.dp.2.8" .
+
+
+###  http://www.uponto.link/ontology/#indexEconomicSecurity
+:indexEconomicSecurity rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf :projectIndexExtractableProperties ;
+                       rdfs:domain :Project ;
+                       rdfs:range xsd:decimal ;
+                       rdfs:comment "An index representing Economic Security at the project jurisdiction. " ;
+                       rdfs:label "index  Economic Security" ;
+                       skos:prefLabel "Economic Security Index " ;
+                       skos:scopeNote "uponto.dp.2.3" .
+
+
+###  http://www.uponto.link/ontology/#indexEnforcingContracts
+:indexEnforcingContracts rdf:type owl:DatatypeProperty ;
+                         rdfs:subPropertyOf :projectIndexExtractableProperties ;
+                         rdfs:domain :Project ;
+                         rdfs:range xsd:decimal ;
+                         dcterms:source "https://data.worldbank.org/indicator/IC.LGL.DURS" ;
+                         rdfs:comment "As defined by the World Bank: Time required to enforce a contract (days)" ;
+                         rdfs:label "index Enforcing Contracts" ;
+                         skos:prefLabel "Enforcing Contracts Index " ;
+                         skos:scopeNote "uponto.dp.2.11" .
+
+
+###  http://www.uponto.link/ontology/#indexEscalationCommodities
+:indexEscalationCommodities rdf:type owl:DatatypeProperty ;
+                            rdfs:subPropertyOf :costIndices ;
+                            rdfs:domain :CostDefinition ;
+                            rdfs:range xsd:decimal ;
+                            rdfs:comment "The anticipated, or observed, escalation in bulk materials and commodities items within the cost breakdown." ;
+                            rdfs:label "index Escalation Commodities" ;
+                            skos:prefLabel "Escalation Index - Commodities" ;
+                            skos:scopeNote "uponto.dp.9.5" .
+
+
+###  http://www.uponto.link/ontology/#indexEscalationEquipment
+:indexEscalationEquipment rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf :costIndices ;
+                          rdfs:domain :CostDefinition ;
+                          rdfs:range xsd:decimal ;
+                          rdfs:comment "The anticipated, or observed, escalation in equipment items that are sourced from specific technical or regional markets within the cost breakdown." ;
+                          rdfs:label "index Escalation Equipment" ;
+                          skos:prefLabel "Escalation Index - Equipment" ;
+                          skos:scopeNote "uponto.dp.9.7" .
+
+
+###  http://www.uponto.link/ontology/#indexEscalationGlobalContracts
+:indexEscalationGlobalContracts rdf:type owl:DatatypeProperty ;
+                                rdfs:subPropertyOf :costIndices ;
+                                rdfs:domain :CostDefinition ;
+                                rdfs:range xsd:decimal ;
+                                rdfs:comment "The anticipated, or observed, escalation in global contract items, such as EPCM charges, within the cost breakdown." ;
+                                rdfs:label "index Escalation Global Contracts" ;
+                                skos:prefLabel "Escalation Index - Global Contracts" ;
+                                skos:scopeNote "uponto.dp.9.9" .
+
+
+###  http://www.uponto.link/ontology/#indexEscalationLabour
+:indexEscalationLabour rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf :costIndices ;
+                       rdfs:domain :CostDefinition ;
+                       rdfs:range xsd:decimal ;
+                       rdfs:comment "The anticipated, or observed, escalation in labor items within the cost breakdown." ;
+                       rdfs:label "index Escalation Labour" ;
+                       skos:prefLabel "Escalation Index - Labour" ;
+                       skos:scopeNote "uponto.dp.9.6" .
+
+
+###  http://www.uponto.link/ontology/#indexEscalationLocalContracts
+:indexEscalationLocalContracts rdf:type owl:DatatypeProperty ;
+                               rdfs:subPropertyOf :costIndices ;
+                               rdfs:domain :CostDefinition ;
+                               rdfs:range xsd:decimal ;
+                               rdfs:comment "The anticipated, or observed, escalation in local contract items, such as construction sub contracts,  within the cost breakdown." ;
+                               rdfs:label "index Escalation Local Contracts" ;
+                               skos:prefLabel "Escalation Index - Local Contracts" ;
+                               skos:scopeNote "uponto.dp.9.8" .
+
+
+###  http://www.uponto.link/ontology/#indexEscalationReference
+:indexEscalationReference rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf :costIndices ;
+                          rdfs:domain :CostDefinition ;
+                          rdfs:range xsd:decimal ;
+                          rdfs:comment "The escalation index source that is used to normalised the cost, anticipated to be any of the available cost indexes such as UCCI by IHS." ;
+                          rdfs:label "index Escalation Reference" ;
+                          skos:prefLabel "Escalation Reference Index" ;
+                          skos:scopeNote "uponto.dp.9.3" .
+
+
+###  http://www.uponto.link/ontology/#indexEscalationWeightedaverage
+:indexEscalationWeightedaverage rdf:type owl:DatatypeProperty ;
+                                rdfs:subPropertyOf :costIndices ;
+                                rdfs:domain :CostDefinition ;
+                                rdfs:range xsd:decimal ;
+                                rdfs:comment "The weighted average of the escalation index in presence of specific escalation analysis across all cost groups." ;
+                                rdfs:label "index Escalation Weighted average" ;
+                                skos:prefLabel "Escalation Index - Weighted average" ;
+                                skos:scopeNote "uponto.dp.9.4" .
+
+
+###  http://www.uponto.link/ontology/#indexExperienceContractorInCountry
+:indexExperienceContractorInCountry rdf:type owl:DatatypeProperty ;
+                                    rdfs:subPropertyOf :projectTeamDataProperties ;
+                                    rdfs:domain :ProjectInfoCard ;
+                                    rdfs:range xsd:decimal ;
+                                    rdfs:comment "A qualitative index rating the experience of  the main contractors in the specific jurisdiction, or country, of the project; on a discrete Likert scale between 0, to 10, with 10 being the best. " ;
+                                    rdfs:label "index Experience Contractor In Country" ;
+                                    skos:prefLabel "Experience Contractor In Country Index" ;
+                                    skos:scopeNote "uponto.dp.5.10" .
+
+
+###  http://www.uponto.link/ontology/#indexExperienceContractorInSector
+:indexExperienceContractorInSector rdf:type owl:DatatypeProperty ;
+                                   rdfs:subPropertyOf :projectTeamDataProperties ;
+                                   rdfs:domain :ProjectInfoCard ;
+                                   rdfs:range xsd:decimal ;
+                                   rdfs:comment "A qualitative index rating the experience of the main contractors in the specific sector of the project; on a discrete Likert scale between 0, to 10, with 10 being the best. " ;
+                                   rdfs:label "index Experience Contractor In Sector" ;
+                                   skos:prefLabel "Experience Contractor In Sector Index" ;
+                                   skos:scopeNote "uponto.dp.5.9" .
+
+
+###  http://www.uponto.link/ontology/#indexExperienceEngineersInCountry
+:indexExperienceEngineersInCountry rdf:type owl:DatatypeProperty ;
+                                   rdfs:subPropertyOf :projectTeamDataProperties ;
+                                   rdfs:domain :ProjectInfoCard ;
+                                   rdfs:range xsd:decimal ;
+                                   rdfs:comment "A qualitative index rating the experience of the engineering firm in the specific jurisdiction, or country, of the project; on a discrete Likert scale between 0, to 10, with 10 being the best. " ;
+                                   rdfs:label "index Experience Engineers In Country" ;
+                                   skos:prefLabel "Experience Engineers In Country Index" ;
+                                   skos:scopeNote "uponto.dp.5.8" .
+
+
+###  http://www.uponto.link/ontology/#indexExperienceEngineersInSector
+:indexExperienceEngineersInSector rdf:type owl:DatatypeProperty ;
+                                  rdfs:subPropertyOf :projectTeamDataProperties ;
+                                  rdfs:domain :ProjectInfoCard ;
+                                  rdfs:range xsd:decimal ;
+                                  rdfs:comment "A qualitative index rating the experience of the engineering firm in the specific sector of the project; on a discrete Likert scale between 0, to 10, with 10 being the best. " ;
+                                  rdfs:label "index Experience Engineers In Sector" ;
+                                  skos:prefLabel "Experienced Engineers In Sector Index" ;
+                                  skos:scopeNote "uponto.dp.5.7" .
+
+
+###  http://www.uponto.link/ontology/#indexExperienceSponsorInCountry
+:indexExperienceSponsorInCountry rdf:type owl:DatatypeProperty ;
+                                 rdfs:subPropertyOf :projectTeamDataProperties ;
+                                 rdfs:domain :ProjectInfoCard ;
+                                 rdfs:range xsd:decimal ;
+                                 rdfs:comment "A qualitative index rating the experience of the sponsor in the specific jurisdiction, or country, of the project; on a discrete Likert scale between 0, to 10, with 10 being the best. " ;
+                                 rdfs:label "index Experience Sponsor In Country" ;
+                                 skos:prefLabel "Experienced Sponsor In Country Index" ;
+                                 skos:scopeNote "uponto.dp.5.6" .
+
+
+###  http://www.uponto.link/ontology/#indexExperienceSponsorInSector
+:indexExperienceSponsorInSector rdf:type owl:DatatypeProperty ;
+                                rdfs:subPropertyOf :projectTeamDataProperties ;
+                                rdfs:domain :ProjectInfoCard ;
+                                rdfs:range xsd:decimal ;
+                                rdfs:comment "A qualitative index rating the experience of the sponsor in the specific sector of the project; on a discrete Likert scale between 0, to 10, with 10 being the best. " ;
+                                rdfs:label "index Experience Sponsor In Sector" ;
+                                skos:prefLabel "Experienced Sponsor In Sector Index" ;
+                                skos:scopeNote "uponto.dp.5.5" .
+
+
+###  http://www.uponto.link/ontology/#indexGeographicCriticalityForSponsor
+:indexGeographicCriticalityForSponsor rdf:type owl:DatatypeProperty ;
+                                      rdfs:subPropertyOf :definitionProperties ;
+                                      rdfs:domain :ProjectInfoCard ;
+                                      rdfs:range xsd:decimal ;
+                                      rdfs:comment "An index rating the extent of geographic criticality and importance of the project for the sponsor. This can be calculated as the percentage of total project Capex to the sponsors total assets in that geographic jurisdiction." ;
+                                      rdfs:label "index Geographic Criticality For Sponsor" ;
+                                      skos:prefLabel "Geographic Criticality For Sponsor Index" ;
+                                      skos:scopeNote "uponto.dp.3.34" .
+
+
+###  http://www.uponto.link/ontology/#indexInfrastructureAccessIssues
+:indexInfrastructureAccessIssues rdf:type owl:DatatypeProperty ;
+                                 rdfs:subPropertyOf :projectClimateAccessPermitting ;
+                                 rdfs:domain :ProjectInfoCard ;
+                                 rdfs:range xsd:decimal ;
+                                 rdfs:comment "A qualitative index rating the infrastructure access problems, and proximity to major infrastructure that can facilitate both construction and operation of the project; on a discrete Likert scale between 0, to 10, with 10 being the best." ;
+                                 rdfs:label "index Infrastructure Access Issues" ;
+                                 skos:prefLabel "Infrastructure Access Issues" ;
+                                 skos:scopeNote "uponto.dp.6.1" .
+
+
+###  http://www.uponto.link/ontology/#indexIssuesDueToBasicData
+:indexIssuesDueToBasicData rdf:type owl:DatatypeProperty ;
+                           rdfs:subPropertyOf :definitionProperties ;
+                           rdfs:domain :ProjectInfoCard ;
+                           rdfs:range xsd:decimal ;
+                           dcterms:source "<a href=\"https://onlinelibrary.wiley.com/doi/book/10.1002/9781119201045\" target=\"_blank\"> Merrow 2011.</a> Industrial Megaprojects: Concepts, Strategies, and Practices for Success." ;
+                           rdfs:comment "A qualitative index rating the extent of engineering issues with basic data, on a discrete Likert scale between 0, to 10." ;
+                           rdfs:label "index Issues Due To Basic Data" ;
+                           skos:prefLabel "Issues Due To Basic Data" ;
+                           skos:scopeNote "uponto.dp.3.20" .
+
+
+###  http://www.uponto.link/ontology/#indexIssuesWithProcurementVendors
+:indexIssuesWithProcurementVendors rdf:type owl:DatatypeProperty ;
+                                   rdfs:subPropertyOf :definitionProperties ;
+                                   rdfs:domain :ProjectInfoCard ;
+                                   rdfs:range xsd:decimal ;
+                                   rdfs:comment "A qualitative index rating the extent of issues with procurement vendors, on a discrete Likert scale between 0, to 10." ;
+                                   rdfs:label "index Issues With Procurement Vendors" ;
+                                   skos:prefLabel "Issues With Procurement Vendors" ;
+                                   skos:scopeNote "uponto.dp.3.19" .
+
+
+###  http://www.uponto.link/ontology/#indexLaborAccessIssues
+:indexLaborAccessIssues rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf :projectClimateAccessPermitting ;
+                        rdfs:domain :ProjectInfoCard ;
+                        rdfs:range xsd:decimal ;
+                        rdfs:comment "A qualitative index rating the labor access problems, and proximity to major population centers and skilled labor that can facilitate both construction and operation of the project; on a discrete Likert scale between 0, to 10, with 10 being the best." ;
+                        rdfs:label "index Labor Access Issues" ;
+                        skos:prefLabel "Labor Access Issues" ;
+                        skos:scopeNote "uponto.dp.6.4" .
+
+
+###  http://www.uponto.link/ontology/#indexLendingInterestRate
+:indexLendingInterestRate rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf :projectIndexExtractableProperties ;
+                          rdfs:domain :Project ;
+                          rdfs:range xsd:decimal ;
+                          dcterms:source "https://data.worldbank.org/indicator/FR.INR.LEND" ;
+                          rdfs:comment "As defined by the World Bank: Lending interest rate (%)" ;
+                          rdfs:label "index  Lending Interest Rate" ;
+                          skos:prefLabel "Lending Interest Rate" ;
+                          skos:scopeNote "uponto.dp.2.7" .
+
+
+###  http://www.uponto.link/ontology/#indexManagementOwnership
+:indexManagementOwnership rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf :definitionProperties ;
+                          rdfs:domain :ProjectInfoCard ;
+                          rdfs:range xsd:decimal ;
+                          rdfs:comment "An index rating the extent of management ownership within the main sponsor organization. This can be derived as the percentage of total company shares held by the management from SEC/OSC disclosures." ;
+                          rdfs:label "index Management Ownership" ;
+                          skos:prefLabel "Management Ownership Index" ;
+                          skos:scopeNote "uponto.dp.3.35" .
+
+
+###  http://www.uponto.link/ontology/#indexNIRI
+:indexNIRI rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf :projectClimateAccessPermitting ;
+           rdfs:domain :ProjectInfoCard ;
+           rdfs:range xsd:decimal ;
+           dcterms:source "<a href=\"https://ascelibrary.org/doi/abs/10.1061/%28ASCE%29CP.1943-5487.0000906\" target=\"_blank\"> Zangeneh et al. 2020.</a> Quantifying Remoteness for Risk and Resilience Assessment U`sing Nighttime Satellite Imagery." ;
+           rdfs:comment "The Nighttime Remoteness Index (NIRI). NIRI is a remoteness index that is constructed based on nighttime satellite imagery." ;
+           rdfs:label "index NIRI" ;
+           skos:prefLabel "NIRI Index" ;
+           skos:scopeNote "uponto.dp.6.9" .
+
+
+###  http://www.uponto.link/ontology/#indexNRGI
+:indexNRGI rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf :projectIndexExtractableProperties ;
+           rdfs:domain :Project ;
+           rdfs:range xsd:decimal ;
+           dcterms:source "https://resourcegovernanceindex.org/" ;
+           rdfs:comment "The index measures the quality of resource governance for the project jurisdiction." ;
+           rdfs:label "index NRGI" ;
+           skos:prefLabel "NRGI Index " ;
+           skos:scopeNote "uponto.dp.2.12" .
+
+
+###  http://www.uponto.link/ontology/#indexPPPExchangeRateToUSD
+:indexPPPExchangeRateToUSD rdf:type owl:DatatypeProperty ;
+                           rdfs:subPropertyOf :costIndices ;
+                           rdfs:domain :CostDefinition ;
+                           rdfs:range xsd:decimal ;
+                           rdfs:comment "The purchasing power parity of the cost instance currency to the United States Dollars (/USD) on the cost date, or average during the cost date year." ;
+                           rdfs:label "index PPP Exchange Rate To USD" ;
+                           skos:prefLabel "PPP Exchange Rate To USD" ;
+                           skos:scopeNote "uponto.dp.9.2" .
+
+
+###  http://www.uponto.link/ontology/#indexPermittingAccess
+:indexPermittingAccess rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf :projectClimateAccessPermitting ;
+                       rdfs:domain :ProjectInfoCard ;
+                       rdfs:range xsd:decimal ;
+                       rdfs:comment "A qualitative index rating the general access problems to the project site, such as short term visit visa regulations, working visa regulations, and other limitations, from the viewpoint of the citizens of the sponsor's home country; on a discrete Likert scale between 0, to 10, with 10 being the best." ;
+                       rdfs:label "index Permitting Access" ;
+                       skos:prefLabel "Access Permitting Index" ;
+                       skos:scopeNote "uponto.dp.6.10" .
+
+
+###  http://www.uponto.link/ontology/#indexPermittingEnvironmental
+:indexPermittingEnvironmental rdf:type owl:DatatypeProperty ;
+                              rdfs:subPropertyOf :projectClimateAccessPermitting ;
+                              rdfs:domain :ProjectInfoCard ;
+                              rdfs:range xsd:decimal ;
+                              rdfs:comment "A qualitative index rating the specific environmental issues of the project in its jurisdiction; on a discrete Likert scale between 0, to 10, with 10 being the best." ;
+                              rdfs:label "index Permitting Environmental" ;
+                              skos:prefLabel "Environmental Permitting Index" ;
+                              skos:scopeNote "uponto.dp.6.11" .
+
+
+###  http://www.uponto.link/ontology/#indexPermittingOperations
+:indexPermittingOperations rdf:type owl:DatatypeProperty ;
+                           rdfs:subPropertyOf :projectClimateAccessPermitting ;
+                           rdfs:domain :ProjectInfoCard ;
+                           rdfs:range xsd:decimal ;
+                           rdfs:comment "A qualitative index rating the specific permit issues with regards to operations, whether it would be extraction, or other operations; on a discrete Likert scale between 0, to 10, with 10 being the best." ;
+                           rdfs:label "index Permitting Operations" ;
+                           skos:prefLabel "Operations Permitting Index Operations" ;
+                           skos:scopeNote "uponto.dp.6.13" .
+
+
+###  http://www.uponto.link/ontology/#indexPermittingSocialLicense
+:indexPermittingSocialLicense rdf:type owl:DatatypeProperty ;
+                              rdfs:subPropertyOf :projectClimateAccessPermitting ;
+                              rdfs:domain :ProjectInfoCard ;
+                              rdfs:range xsd:decimal ;
+                              rdfs:comment "A qualitative index rating social and community issues of the project, and the broader social license to operate issues; on a discrete Likert scale between 0, to 10, with 10 being the best." ;
+                              rdfs:label "index Permitting Social License" ;
+                              skos:prefLabel "Social License to Operate Index" ;
+                              skos:scopeNote "uponto.dp.6.12" .
+
+
+###  http://www.uponto.link/ontology/#indexPermittingTransportation
+:indexPermittingTransportation rdf:type owl:DatatypeProperty ;
+                               rdfs:subPropertyOf :projectClimateAccessPermitting ;
+                               rdfs:domain :ProjectInfoCard ;
+                               rdfs:range xsd:decimal ;
+                               rdfs:comment "A qualitative index rating the specific permit issues with regards to transportation of the project products, or the raw material inputs, such as custom clearance issues; on a discrete Likert scale between 0, to 10, with 10 being the best." ;
+                               rdfs:label "index Permitting Transportation" ;
+                               skos:prefLabel "Transportation Permitting Index " ;
+                               skos:scopeNote "uponto.dp.6.14" .
+
+
+###  http://www.uponto.link/ontology/#indexPoliticalSecurity
+:indexPoliticalSecurity rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf :projectIndexExtractableProperties ;
+                        rdfs:domain :Project ;
+                        rdfs:range xsd:decimal ;
+                        rdfs:comment "An index representing Political Security at the project jurisdiction. " ;
+                        rdfs:label "index  Political Security " ;
+                        skos:prefLabel "Political Security Index " ;
+                        skos:scopeNote "uponto.dp.2.2" .
+
+
+###  http://www.uponto.link/ontology/#indexPowerAccessIssues
+:indexPowerAccessIssues rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf :projectClimateAccessPermitting ;
+                        rdfs:domain :ProjectInfoCard ;
+                        rdfs:range xsd:decimal ;
+                        rdfs:comment "A qualitative index rating the power access problems, and proximity to major power grids that can facilitate both construction and operation of the project; on a discrete Likert scale between 0, to 10, with 10 being the best." ;
+                        rdfs:label "index Power Access Issues" ;
+                        skos:prefLabel "Power Access Issues" ;
+                        skos:scopeNote "uponto.dp.6.2" .
+
+
+###  http://www.uponto.link/ontology/#indexProjectLifetoPaybackPeriod
+:indexProjectLifetoPaybackPeriod rdf:type owl:DatatypeProperty ;
+                                 rdfs:subPropertyOf :projectFinancialProperties ;
+                                 rdfs:domain [ rdf:type owl:Class ;
+                                               owl:unionOf ( :CostDefinition
+                                                             :ProjectInfoCard
+                                                           )
+                                             ] ;
+                                 rdfs:range xsd:decimal ;
+                                 rdfs:comment "The quantitative index of project design life to the payback period." ;
+                                 rdfs:label "index Project Life to Payback Period" ;
+                                 skos:prefLabel "Project Life to Payback Period Index" ;
+                                 skos:scopeNote "uponto.dp.11.3" .
+
+
+###  http://www.uponto.link/ontology/#indexProjectTechnologyClass
+:indexProjectTechnologyClass rdf:type owl:DatatypeProperty ;
+                             rdfs:subPropertyOf :definitionProperties ;
+                             rdfs:domain :ProjectInfoCard ;
+                             rdfs:range xsd:decimal ;
+                             dcterms:source "<a href=\"https://www.rand.org/pubs/reports/R2569.html\" target=\"_blank\"> Merrow et al. 1981.</a> Understanding Cost Growth and Performance Shortfalls in Pioneer Process Plants." ;
+                             rdfs:comment "A qualitative index rating the extent of new and unproven technology with the project processes. This can be calculated as the percentage of Capex dedicated to new and unproven technology to the total Capex." ;
+                             rdfs:label "index Project Technology Class" ;
+                             skos:prefLabel "Project Technology Class Index" ;
+                             skos:scopeNote "uponto.dp.3.30" .
+
+
+###  http://www.uponto.link/ontology/#indexRMI
+:indexRMI rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf :projectIndexExtractableProperties ;
+          rdfs:domain :Project ;
+          rdfs:range xsd:decimal ;
+          dcterms:source "https://responsibleminingindex.org/" ;
+          rdfs:comment "The index assesses the company policies and practices on economic, environmental, social and governance issues." ;
+          rdfs:label "index RMI" ;
+          skos:prefLabel "RMI Index " ;
+          skos:scopeNote "uponto.dp.2.13" .
+
+
+###  http://www.uponto.link/ontology/#indexScopeChangeDuringPhase2
+:indexScopeChangeDuringPhase2 rdf:type owl:DatatypeProperty ;
+                              rdfs:subPropertyOf :definitionProperties ;
+                              rdfs:domain :ProjectInfoCard ;
+                              rdfs:range xsd:decimal ;
+                              rdfs:comment "A qualitative index rating the extent of change in project scope within phase 2, on a discrete Likert scale between 0, to 10. Choosing or abandoning available options carried into phase shall not be considered as scope change." ;
+                              rdfs:label "index Scope Change During Phase 2" ;
+                              skos:prefLabel "Scope Change During Phase 2" ;
+                              skos:scopeNote "uponto.dp.3.26" .
+
+
+###  http://www.uponto.link/ontology/#indexScopeChangeDuringPhase3
+:indexScopeChangeDuringPhase3 rdf:type owl:DatatypeProperty ;
+                              rdfs:subPropertyOf :definitionProperties ;
+                              rdfs:domain :ProjectInfoCard ;
+                              rdfs:range xsd:decimal ;
+                              rdfs:comment "A qualitative index rating the extent of change in project scope within phase 3, on a discrete Likert scale between 0, to 10. Choosing or abandoning available options carried into phase shall not be considered as scope change." ;
+                              rdfs:label "index Scope Change During Phase 3" ;
+                              skos:prefLabel "Scope Change During Phase 3" ;
+                              skos:scopeNote "uponto.dp.3.27" .
+
+
+###  http://www.uponto.link/ontology/#indexScopeChangeDuringPhase4
+:indexScopeChangeDuringPhase4 rdf:type owl:DatatypeProperty ;
+                              rdfs:subPropertyOf :definitionProperties ;
+                              rdfs:domain :ProjectInfoCard ;
+                              rdfs:range xsd:decimal ;
+                              rdfs:comment "A qualitative index rating the extent of change in project scope within phase 4, on a discrete Likert scale between 0, to 10. Choosing or abandoning available options carried into phase shall not be considered as scope change." ;
+                              rdfs:label "index Scope Change During Phase 4" ;
+                              skos:prefLabel "Scope Change During Phase 4" ;
+                              skos:scopeNote "uponto.dp.3.28" .
+
+
+###  http://www.uponto.link/ontology/#indexSponsorAdequateStaffing
+:indexSponsorAdequateStaffing rdf:type owl:DatatypeProperty ;
+                              rdfs:subPropertyOf :projectTeamDataProperties ;
+                              rdfs:domain :ProjectInfoCard ;
+                              rdfs:range xsd:decimal ;
+                              rdfs:comment "A qualitative index rating the adequacy of staffing in the sponsors main dedicated team to the project, that is as well a function of standard project organization chart; on a discrete Likert scale between 0, to 10, with 10 being the best. " ;
+                              rdfs:label "index Sponsor Adequate Staffing " ;
+                              skos:prefLabel "Sponsor Adequate Staffing Index" ;
+                              skos:scopeNote "uponto.dp.5.2" .
+
+
+###  http://www.uponto.link/ontology/#indexStrategicCriticalityForSponsor
+:indexStrategicCriticalityForSponsor rdf:type owl:DatatypeProperty ;
+                                     rdfs:subPropertyOf :definitionProperties ;
+                                     rdfs:domain :ProjectInfoCard ;
+                                     rdfs:range xsd:decimal ;
+                                     rdfs:comment "An index rating the extent of strategic criticality and importance of the project for the sponsor. This can be calculated as the percentage of total project Capex to the sponsors total market cap, or private company valuation." ;
+                                     rdfs:label "index Strategic Criticality For Sponsor" ;
+                                     skos:prefLabel "Strategic Criticality For Sponsor Index" ;
+                                     skos:scopeNote "uponto.dp.3.33" .
+
+
+###  http://www.uponto.link/ontology/#indexSummerWeather
+:indexSummerWeather rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :projectClimateAccessPermitting ;
+                    rdfs:domain :ProjectInfoCard ;
+                    rdfs:range xsd:decimal ;
+                    rdfs:comment "The average of the three highest average-monthly-minimum-temperatures for the project location in Celsius degrees." ;
+                    rdfs:label "index Summer Weather" ;
+                    skos:prefLabel "Summer Weather" ;
+                    skos:scopeNote "uponto.dp.6.8" .
+
+
+###  http://www.uponto.link/ontology/#indexTimeToStartBusiness
+:indexTimeToStartBusiness rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf :projectIndexExtractableProperties ;
+                          rdfs:domain :Project ;
+                          rdfs:range xsd:decimal ;
+                          dcterms:source "https://data.worldbank.org/indicator/IC.REG.DURS" ;
+                          rdfs:comment "As defined by the World Bank: Time required to start a business (days)" ;
+                          rdfs:label "index  Time To Start Business" ;
+                          skos:prefLabel "Time To Start Business" ;
+                          skos:scopeNote "uponto.dp.2.9" .
+
+
+###  http://www.uponto.link/ontology/#indexViableExpansionPlan
+:indexViableExpansionPlan rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf :definitionProperties ;
+                          rdfs:domain :ProjectInfoCard ;
+                          rdfs:range xsd:decimal ;
+                          rdfs:comment "A qualitative index rating the extent of viable strategic expansion plans for the project in its design life, on a discrete Likert scale between 0, to 10." ;
+                          rdfs:label "index Viable Expansion Plan" ;
+                          skos:prefLabel "Viable Expansion Plans Index" ;
+                          skos:scopeNote "uponto.dp.3.32" .
+
+
+###  http://www.uponto.link/ontology/#indexWaterAccessIssues
+:indexWaterAccessIssues rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf :projectClimateAccessPermitting ;
+                        rdfs:domain :ProjectInfoCard ;
+                        rdfs:range xsd:decimal ;
+                        rdfs:comment "A qualitative index rating the water access problems, and proximity to major water resourced that can facilitate both construction and operation of the project; on a discrete Likert scale between 0, to 10, with 10 being the best." ;
+                        rdfs:label "index Water Access Issues" ;
+                        skos:prefLabel "Water Access Issues" ;
+                        skos:scopeNote "uponto.dp.6.3" .
+
+
+###  http://www.uponto.link/ontology/#indexWinterWeather
+:indexWinterWeather rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :projectClimateAccessPermitting ;
+                    rdfs:domain :ProjectInfoCard ;
+                    rdfs:range xsd:decimal ;
+                    rdfs:comment "The average of the three lowest average-monthly-minimum-temperatures for the project location in Celsius degrees." ;
+                    rdfs:label "index Winter Weather" ;
+                    skos:prefLabel "Winter Weather" ;
+                    skos:scopeNote "uponto.dp.6.7" .
+
+
+###  http://www.uponto.link/ontology/#isCostEstimate
+:isCostEstimate rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf :projectCostDataProperties ;
+                rdfs:domain :CostDefinition ;
+                rdfs:range xsd:boolean ;
+                rdfs:comment "The Boolean data property specifying whether or not the cost instance is an estimate or - if False - an actual cost." ;
+                rdfs:label "is Cost Estimate" ;
+                skos:prefLabel "is Cost Estimate" ;
+                skos:scopeNote "uponto.dp.7.2" .
+
+
+###  http://www.uponto.link/ontology/#numConstructionSub-contracts
+:numConstructionSub-contracts rdf:type owl:DatatypeProperty ;
+                              rdfs:subPropertyOf :definitionProperties ;
+                              rdfs:domain :ProjectInfoCard ;
+                              rdfs:range xsd:integer ;
+                              rdfs:comment "Total number of construction sub-contracts." ;
+                              rdfs:label "num Construction Sub-contracts" ;
+                              skos:prefLabel "Number of  Construction Sub-contracts" ;
+                              skos:scopeNote "uponto.dp.3.22" .
+
+
+###  http://www.uponto.link/ontology/#numLongLeadProcurementPackages
+:numLongLeadProcurementPackages rdf:type owl:DatatypeProperty ;
+                                rdfs:subPropertyOf :definitionProperties ;
+                                rdfs:domain :ProjectInfoCard ;
+                                rdfs:range xsd:integer ;
+                                rdfs:comment "The total number of procurement packages, with more than one year required lead time." ;
+                                rdfs:label "num Long Lead Procurement Packages" ;
+                                skos:prefLabel "Number of  Long Lead Procurement Packages" ;
+                                skos:scopeNote "uponto.dp.3.17" .
+
+
+###  http://www.uponto.link/ontology/#numOptionsEnteringPhase2
+:numOptionsEnteringPhase2 rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf :definitionProperties ;
+                          rdfs:domain :ProjectInfoCard ;
+                          rdfs:range xsd:integer ;
+                          dcterms:source "<a href=\"https://onlinelibrary.wiley.com/doi/book/10.1002/9781119201045\" target=\"_blank\"> Merrow 2011.</a> Industrial Megaprojects: Concepts, Strategies, and Practices for Success." ;
+                          rdfs:comment "Total number of major project options entering phase 2." ;
+                          rdfs:label "num Options Entering Phase 2" ;
+                          skos:prefLabel "Number of  Options Entering Phase 2" ;
+                          skos:scopeNote "uponto.dp.3.23" .
+
+
+###  http://www.uponto.link/ontology/#numOptionsEnteringPhase3
+:numOptionsEnteringPhase3 rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf :definitionProperties ;
+                          rdfs:domain :ProjectInfoCard ;
+                          rdfs:range xsd:integer ;
+                          dcterms:source "<a href=\"https://onlinelibrary.wiley.com/doi/book/10.1002/9781119201045\" target=\"_blank\"> Merrow 2011.</a> Industrial Megaprojects: Concepts, Strategies, and Practices for Success." ;
+                          rdfs:comment "Total number of major project options entering phase 3." ;
+                          rdfs:label "num Options Entering Phase 3" ;
+                          skos:prefLabel "Number of  Options Entering Phase 3" ;
+                          skos:scopeNote "uponto.dp.3.24" .
+
+
+###  http://www.uponto.link/ontology/#numOptionsEnteringPhase4
+:numOptionsEnteringPhase4 rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf :definitionProperties ;
+                          rdfs:domain :ProjectInfoCard ;
+                          rdfs:range xsd:integer ;
+                          dcterms:source "<a href=\"https://onlinelibrary.wiley.com/doi/book/10.1002/9781119201045\" target=\"_blank\"> Merrow 2011.</a> Industrial Megaprojects: Concepts, Strategies, and Practices for Success." ;
+                          rdfs:comment "Total number of major project options entering phase 4 (Execution Phase)." ;
+                          rdfs:label "num Options Entering Phase 4" ;
+                          skos:prefLabel "Number of  Options Entering Phase 4" ;
+                          skos:scopeNote "uponto.dp.3.25" .
+
+
+###  http://www.uponto.link/ontology/#numOwners
+:numOwners rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf :definitionProperties ;
+           rdfs:domain :ProjectInfoCard ;
+           rdfs:range xsd:integer ;
+           rdfs:comment "Total number of equity holder entities within the project." ;
+           rdfs:label "num Owners" ;
+           skos:prefLabel "Number of  Owners" ;
+           skos:scopeNote "uponto.dp.3.21" .
+
+
+###  http://www.uponto.link/ontology/#numProcurementPackages
+:numProcurementPackages rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf :definitionProperties ;
+                        rdfs:domain :ProjectInfoCard ;
+                        rdfs:range xsd:integer ;
+                        rdfs:comment "The total number of procurement packages, including both long and short lead time." ;
+                        rdfs:label "num Procurement Packages" ;
+                        skos:prefLabel "Number of Procurement Packages" ;
+                        skos:scopeNote "uponto.dp.3.16" .
+
+
+###  http://www.uponto.link/ontology/#numSeparateProcesses
+:numSeparateProcesses rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf :definitionProperties ;
+                      rdfs:domain :ProjectInfoCard ;
+                      rdfs:range xsd:integer ;
+                      dcterms:source "<a href=\"https://onlinelibrary.wiley.com/doi/book/10.1002/9781119201045\" target=\"_blank\"> Merrow 2011.</a> Industrial Megaprojects: Concepts, Strategies, and Practices for Success." ;
+                      rdfs:comment "Total number of separate - chemical or otherwise - processes within the project." ;
+                      rdfs:label "num Separate Processes" ;
+                      owl:equivalentProperty "https://www.rics.org/rics-icms-1.1.xsd#noOfProcesses" ;
+                      skos:prefLabel "Number of  Separate Processes" ;
+                      skos:scopeNote "uponto.dp.3.29" .
+
+
+###  http://www.uponto.link/ontology/#numShortLeadProcurementPackages
+:numShortLeadProcurementPackages rdf:type owl:DatatypeProperty ;
+                                 rdfs:subPropertyOf :definitionProperties ;
+                                 rdfs:domain :ProjectInfoCard ;
+                                 rdfs:range xsd:integer ;
+                                 rdfs:comment "The total number of procurement packages, with less than one year required lead time." ;
+                                 rdfs:label "num Short Lead Procurement Packages" ;
+                                 skos:prefLabel "Number of  Short Lead Procurement Packages" ;
+                                 skos:scopeNote "uponto.dp.3.18" .
+
+
+###  http://www.uponto.link/ontology/#numSponsorMajorManagementTurnover
+:numSponsorMajorManagementTurnover rdf:type owl:DatatypeProperty ;
+                                   rdfs:subPropertyOf :projectTeamDataProperties ;
+                                   rdfs:domain :ProjectInfoCard ;
+                                   rdfs:range xsd:integer ;
+                                   dcterms:source "<a href=\"https://onlinelibrary.wiley.com/doi/book/10.1002/9781119201045\" target=\"_blank\"> Merrow 2011.</a> Industrial Megaprojects: Concepts, Strategies, and Practices for Success." ;
+                                   rdfs:comment "The total number of management change the sponsor's main team dedicated to the project." ;
+                                   rdfs:label "num Sponsor Major Management Turnover" ;
+                                   skos:prefLabel "Number of Sponsor Major Management Turnover" ;
+                                   skos:scopeNote "uponto.dp.5.4" .
+
+
+###  http://www.uponto.link/ontology/#prcntCapexConstruction
+:prcntCapexConstruction rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf :costAndScheduleProperties ;
+                        rdfs:domain [ rdf:type owl:Class ;
+                                      owl:unionOf ( :CostDefinition
+                                                    :ProjectInfoCard
+                                                  )
+                                    ] ;
+                        rdfs:range xsd:decimal ;
+                        rdfs:comment "The percentage of the cost of the construction phase of the project to the total estimated or actual capital expenditure in current (normative) currency value. The total capital expenditure does include construction." ;
+                        rdfs:label "prcnt Capex Construction " ;
+                        skos:prefLabel "Capex Percentage of Construction " ;
+                        skos:scopeNote "uponto.dp.10.14" .
+
+
+###  http://www.uponto.link/ontology/#prcntCapexDetailedEngineering
+:prcntCapexDetailedEngineering rdf:type owl:DatatypeProperty ;
+                               rdfs:subPropertyOf :costAndScheduleProperties ;
+                               rdfs:domain [ rdf:type owl:Class ;
+                                             owl:unionOf ( :CostDefinition
+                                                           :ProjectInfoCard
+                                                         )
+                                           ] ;
+                               rdfs:range xsd:decimal ;
+                               rdfs:comment "The percentage of the cost of the detailed engineering phase of the project to the total estimated or actual capital expenditure in current (normative) currency value. The total capital expenditure does include detailed engineering." ;
+                               rdfs:label "prcnt Capex Detailed Engineering" ;
+                               skos:prefLabel "Capex Percentage of Detailed Engineering" ;
+                               skos:scopeNote "uponto.dp.10.12" .
+
+
+###  http://www.uponto.link/ontology/#prcntCapexInfrastructure
+:prcntCapexInfrastructure rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf :costAndScheduleProperties ;
+                          rdfs:domain [ rdf:type owl:Class ;
+                                        owl:unionOf ( :CostDefinition
+                                                      :ProjectInfoCard
+                                                    )
+                                      ] ;
+                          rdfs:range xsd:decimal ;
+                          rdfs:comment "The percentage of the cost of the required infrastructures, both detailed engineering design and construction,  to the total estimated or actual capital expenditure in current (normative) currency value. The total capital expenditure does include required infrastructures." ;
+                          rdfs:label "prcnt Capex Infrastructure" ;
+                          skos:prefLabel "Capex Percentage of Infrastructure" ;
+                          skos:scopeNote "uponto.dp.10.15" .
+
+
+###  http://www.uponto.link/ontology/#prcntCapexPhase1and2
+:prcntCapexPhase1and2 rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf :definitionProperties ;
+                      rdfs:domain :ProjectInfoCard ;
+                      rdfs:range xsd:decimal ;
+                      rdfs:comment "The percentage of the cost of the first two phases of the project to the total actual capital expenditure of the project in current (at completion) currency value. The total actual capital expenditure does not include the three two phases." ;
+                      rdfs:label "prcnt Capex Phase 1 and 2" ;
+                      skos:prefLabel "Percentage Phase 1 and 2 to Capex" ;
+                      skos:scopeNote "uponto.dp.3.1" .
+
+
+###  http://www.uponto.link/ontology/#prcntCapexPhase3
+:prcntCapexPhase3 rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf :definitionProperties ;
+                  rdfs:domain :ProjectInfoCard ;
+                  rdfs:range xsd:decimal ;
+                  rdfs:comment "The percentage of the cost of the third phase of the project to the total actual capital expenditure of the project in current (at completion) currency value. The total actual capital expenditure does not include the first three phases." ;
+                  rdfs:label "prcnt Capex Phase 3" ;
+                  skos:prefLabel "Percentage Phase 3 to Capex" ;
+                  skos:scopeNote "uponto.dp.3.2" .
+
+
+###  http://www.uponto.link/ontology/#prcntCapexProcurementPackages
+:prcntCapexProcurementPackages rdf:type owl:DatatypeProperty ;
+                               rdfs:subPropertyOf :costAndScheduleProperties ;
+                               rdfs:domain [ rdf:type owl:Class ;
+                                             owl:unionOf ( :CostDefinition
+                                                           :ProjectInfoCard
+                                                         )
+                                           ] ;
+                               rdfs:range xsd:decimal ;
+                               rdfs:comment "The percentage of the cost of all the procurement packages of the project to the total estimated or actual capital expenditure in current (normative) currency value. The total capital expenditure does include all the procurement packages." ;
+                               rdfs:label "prcnt Capex Procurement Packages" ;
+                               skos:prefLabel "Capex Percentage of Procurement Packages" ;
+                               skos:scopeNote "uponto.dp.10.13" .
+
+
+###  http://www.uponto.link/ontology/#prcntChangeOrderCostVersusEstimatedCAPEX
+:prcntChangeOrderCostVersusEstimatedCAPEX rdf:type owl:DatatypeProperty ;
+                                          rdfs:subPropertyOf :definitionProperties ;
+                                          rdfs:domain :ProjectInfoCard ;
+                                          rdfs:range xsd:decimal ;
+                                          dcterms:source "<a href=\"https://ascelibrary.org/doi/abs/10.1061/(ASCE)0742-597X(1995)11:1(50)\" target=\"_blank\"> Fisher et al. 1995.</a> Benchmarking in Construction Industry." ;
+                                          rdfs:comment "The percentage of the total change orders value to the total estimated capital expenditure of the project in current (at completion) currency value. " ;
+                                          rdfs:label "prcnt Change Order Cost Versus Estimated CAPEX" ;
+                                          skos:prefLabel "Percentage Change Order Cost to Estimated Capex " ;
+                                          skos:scopeNote "uponto.dp.3.3" .
+
+
+###  http://www.uponto.link/ontology/#prcntConstructionModular
+:prcntConstructionModular rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf :costAndScheduleProperties ;
+                          rdfs:domain [ rdf:type owl:Class ;
+                                        owl:unionOf ( :CostDefinition
+                                                      :ProjectInfoCard
+                                                    )
+                                      ] ;
+                          rdfs:range xsd:decimal ;
+                          rdfs:comment "The percentage of the cost of the construction phase of the project that is spent on modular construction to the total estimated or actual capital cost of the construction phase current (normative) currency value. Modular construction does not include vendor procured process packages." ;
+                          rdfs:label "prcnt Construction Modular" ;
+                          owl:equivalentProperty "https://www.rics.org/rics-icms-1.1.xsd#PrefabricationDegreeEnum" ;
+                          skos:prefLabel "Construction Cost Percentage of Construction Modular" ;
+                          skos:scopeNote "uponto.dp.10.16" .
+
+
+###  http://www.uponto.link/ontology/#prcntConstructionslippage
+:prcntConstructionslippage rdf:type owl:DatatypeProperty ;
+                           rdfs:subPropertyOf :definitionProperties ;
+                           rdfs:domain :ProjectInfoCard ;
+                           rdfs:range xsd:decimal ;
+                           rdfs:comment "The percentage of the actual duration of construction over the estimated duration of construction." ;
+                           rdfs:label "prcnt Construction slippage" ;
+                           skos:prefLabel "Percentage Construction slippage" ;
+                           skos:scopeNote "uponto.dp.3.12" .
+
+
+###  http://www.uponto.link/ontology/#prcntContingency
+:prcntContingency rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf :costAndScheduleProperties ;
+                  rdfs:domain [ rdf:type owl:Class ;
+                                owl:unionOf ( :CostDefinition
+                                              :ProjectInfoCard
+                                            )
+                              ] ;
+                  rdfs:range xsd:decimal ;
+                  dcterms:source "<a href=\"https://web.aacei.org/docs/default-source/rps/10s-90.pdf\" target=\"_blank\"> Association for the Advancement of Cost Engineering (AACE) 2019.</a> Cost Engineering Terminology." ;
+                  rdfs:comment "As defined by AACE, contingency is: An amount added to an estimate to allow for items, conditions, or events for which the state, occurrence, or effect is uncertain and that experience shows will likely result, in aggregate, in additional costs. Typically estimated using statistical analysis or judgment based on past asset or project experience. Contingency usually excludes: 1) Major scope changes such as changes in end product specification, capacities, building sizes, and location of the asset or project; 2) Extraordinary events such as major strikes and natural disasters; 3) Management reserves; and 4) Escalation and currency effects. Some of the items, conditions, or events for which the state, occurrence, and/or effect is uncertain include, but are not limited to, planning and estimating errors and omissions, minor price fluctuations (other than general escalation), design developments and changes within the scope, and variations in market and environmental conditions. Contingency is generally included in most estimates, and is expected to be expended." ;
+                  rdfs:label "prcnt  Contingency" ;
+                  skos:prefLabel "Percentage of Contingency" ;
+                  skos:scopeNote "uponto.dp.10.3" .
+
+
+###  http://www.uponto.link/ontology/#prcntCostCommodities
+:prcntCostCommodities rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf :costAndScheduleProperties ;
+                      rdfs:domain [ rdf:type owl:Class ;
+                                    owl:unionOf ( :CostDefinition
+                                                  :ProjectInfoCard
+                                                )
+                                  ] ;
+                      rdfs:range xsd:decimal ;
+                      rdfs:comment "The percentage of bulk materials and commodities cost in the total capital cost breakdown." ;
+                      rdfs:label "prcnt  Cost Commodities" ;
+                      skos:prefLabel "Cost Percentage of Commodities" ;
+                      skos:scopeNote "uponto.dp.10.4" .
+
+
+###  http://www.uponto.link/ontology/#prcntCostEquipment
+:prcntCostEquipment rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :costAndScheduleProperties ;
+                    rdfs:domain [ rdf:type owl:Class ;
+                                  owl:unionOf ( :CostDefinition
+                                                :ProjectInfoCard
+                                              )
+                                ] ;
+                    rdfs:range xsd:decimal ;
+                    rdfs:comment "The percentage of equipment items that are sourced from specific technical or regional markets in the total capital cost breakdown." ;
+                    rdfs:label "prcnt  Cost Equipment" ;
+                    skos:prefLabel "Cost Percentage of Equipment" ;
+                    skos:scopeNote "uponto.dp.10.6" .
+
+
+###  http://www.uponto.link/ontology/#prcntCostGlobalContracts
+:prcntCostGlobalContracts rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf :costAndScheduleProperties ;
+                          rdfs:domain [ rdf:type owl:Class ;
+                                        owl:unionOf ( :CostDefinition
+                                                      :ProjectInfoCard
+                                                    )
+                                      ] ;
+                          rdfs:range xsd:decimal ;
+                          rdfs:comment "The percentage of global contract items, such as EPCM charges, in the total capital cost breakdown." ;
+                          rdfs:label "prcnt  Cost Global Contracts" ;
+                          skos:prefLabel "Cost Percentage of Global Contracts" ;
+                          skos:scopeNote "uponto.dp.10.8" .
+
+
+###  http://www.uponto.link/ontology/#prcntCostLabour
+:prcntCostLabour rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf :costAndScheduleProperties ;
+                 rdfs:domain [ rdf:type owl:Class ;
+                               owl:unionOf ( :CostDefinition
+                                             :ProjectInfoCard
+                                           )
+                             ] ;
+                 rdfs:range xsd:decimal ;
+                 rdfs:comment "The percentage of labor items in the total capital cost breakdown." ;
+                 rdfs:label "prcnt  Cost Labour" ;
+                 skos:prefLabel "Cost Percentage of Labour" ;
+                 skos:scopeNote "uponto.dp.10.5" .
+
+
+###  http://www.uponto.link/ontology/#prcntCostLocalContracts
+:prcntCostLocalContracts rdf:type owl:DatatypeProperty ;
+                         rdfs:subPropertyOf :costAndScheduleProperties ;
+                         rdfs:domain [ rdf:type owl:Class ;
+                                       owl:unionOf ( :CostDefinition
+                                                     :ProjectInfoCard
+                                                   )
+                                     ] ;
+                         rdfs:range xsd:decimal ;
+                         rdfs:comment "The percentage of local contract items, such as construction sub contracts, in the total capital cost breakdown." ;
+                         rdfs:label "prcnt  Cost Local Contracts" ;
+                         skos:prefLabel "Cost Percentage of Local Contracts" ;
+                         skos:scopeNote "uponto.dp.10.7" .
+
+
+###  http://www.uponto.link/ontology/#prcntDirectCost
+:prcntDirectCost rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf :costAndScheduleProperties ;
+                 rdfs:domain [ rdf:type owl:Class ;
+                               owl:unionOf ( :CostDefinition
+                                             :ProjectInfoCard
+                                           )
+                             ] ;
+                 rdfs:range xsd:decimal ;
+                 rdfs:comment "The percentage of the project cost that is directly attributable to specific project activities, or tasks." ;
+                 rdfs:label "prcnt  Direct Cost" ;
+                 skos:prefLabel "Percentage of  Direct Cost" ;
+                 skos:scopeNote "uponto.dp.10.1" .
+
+
+###  http://www.uponto.link/ontology/#prcntDurationOverlapConstructionAndEngineering
+:prcntDurationOverlapConstructionAndEngineering rdf:type owl:DatatypeProperty ;
+                                                rdfs:subPropertyOf :definitionProperties ;
+                                                rdfs:domain :ProjectInfoCard ;
+                                                rdfs:range xsd:decimal ;
+                                                dcterms:source "<a href=\"https://onlinelibrary.wiley.com/doi/book/10.1002/9781119201045\" target=\"_blank\"> Merrow 2011.</a> Industrial Megaprojects: Concepts, Strategies, and Practices for Success." ;
+                                                rdfs:comment "The percentage of the execution phase duration that the detailed engineering still being done while the construction has started. The detailed engineering is considered complete when more than 90% of the engineering staff are demobilised from the project (Merrow, 2011). " ;
+                                                rdfs:label "prcnt Duration Overlap Construction And Engineering" ;
+                                                skos:prefLabel "Percentage of Duration Overlap Between Construction And Engineering" ;
+                                                skos:scopeNote "uponto.dp.3.10" .
+
+
+###  http://www.uponto.link/ontology/#prcntEngineeringCompletedAtConstructionStart
+:prcntEngineeringCompletedAtConstructionStart rdf:type owl:DatatypeProperty ;
+                                              rdfs:subPropertyOf :definitionProperties ;
+                                              rdfs:domain :ProjectInfoCard ;
+                                              rdfs:range xsd:decimal ;
+                                              dcterms:source "<a href=\"https://www.construction-institute.org/resources/knowledgebase/best-practices/benchmarking-metrics\" target=\"_blank\"> Construction Industry Institute (CII) 2020.</a> Benchmarking & Metrics." ;
+                                              rdfs:comment "The percentage of the detailed engineering completed before construction start. May be calculated by the number of completed engineering deliverables divided by the total engineering deliverables." ;
+                                              rdfs:label "prcnt Engineering Completed At Construction Start" ;
+                                              skos:prefLabel "Percentage Engineering Completed At Construction Start" ;
+                                              skos:scopeNote "uponto.dp.3.14" .
+
+
+###  http://www.uponto.link/ontology/#prcntEngineeringslippage
+:prcntEngineeringslippage rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf :definitionProperties ;
+                          rdfs:domain :ProjectInfoCard ;
+                          rdfs:range xsd:decimal ;
+                          rdfs:comment "The percentage of the actual duration of detailed engineering over the estimated duration of detailed engineering." ;
+                          rdfs:label "prcnt Engineering slippage" ;
+                          skos:prefLabel "Percentage Engineering slippage" ;
+                          skos:scopeNote "uponto.dp.3.11" .
+
+
+###  http://www.uponto.link/ontology/#prcntExecutionphaseslippage
+:prcntExecutionphaseslippage rdf:type owl:DatatypeProperty ;
+                             rdfs:subPropertyOf :definitionProperties ;
+                             rdfs:domain :ProjectInfoCard ;
+                             rdfs:range xsd:decimal ;
+                             rdfs:comment "The percentage of the actual duration of the execution phase (phase 4) over the estimated duration of execution phase." ;
+                             rdfs:label "prcnt Execution phase slippage" ;
+                             skos:prefLabel "Percentage Execution phase slippage" ;
+                             skos:scopeNote "uponto.dp.3.13" .
+
+
+###  http://www.uponto.link/ontology/#prcntIndirectCost
+:prcntIndirectCost rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf :costAndScheduleProperties ;
+                   rdfs:domain [ rdf:type owl:Class ;
+                                 owl:unionOf ( :CostDefinition
+                                               :ProjectInfoCard
+                                             )
+                               ] ;
+                   rdfs:range xsd:decimal ;
+                   rdfs:comment "The percentage of the project cost that is not directly attributable to specific project activities, or tasks, but rather are incurred to enable the project, such as rent, personal protective equipment, training, etc." ;
+                   rdfs:label "prcnt  Indirect Cost " ;
+                   skos:prefLabel "Percentage of Indirect Cost " ;
+                   skos:scopeNote "uponto.dp.10.2" .
+
+
+###  http://www.uponto.link/ontology/#prcntInternationalLabor
+:prcntInternationalLabor rdf:type owl:DatatypeProperty ;
+                         rdfs:subPropertyOf :projectLaborAndSafetyDataProperties ;
+                         rdfs:domain :ProjectInfoCard ;
+                         rdfs:range xsd:decimal ;
+                         rdfs:comment "The percentage of labor force recruited internationally to the project." ;
+                         rdfs:label "prcnt International Labor" ;
+                         skos:prefLabel "Percentage of International Labor" ;
+                         skos:scopeNote "uponto.dp.4.3" .
+
+
+###  http://www.uponto.link/ontology/#prcntLaborUnions
+:prcntLaborUnions rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf :projectLaborAndSafetyDataProperties ;
+                  rdfs:domain :ProjectInfoCard ;
+                  rdfs:range xsd:decimal ;
+                  rdfs:comment "The percentage of the labor force that belong to a labor union." ;
+                  rdfs:label "prcnt Labor Unions" ;
+                  skos:prefLabel "Percentage of Labor Unions" ;
+                  skos:scopeNote "uponto.dp.4.4" .
+
+
+###  http://www.uponto.link/ontology/#prcntLocalLabor
+:prcntLocalLabor rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf :projectLaborAndSafetyDataProperties ;
+                 rdfs:domain :ProjectInfoCard ;
+                 rdfs:range xsd:decimal ;
+                 rdfs:comment "The percentage of labor force recruited from local areas to the project." ;
+                 rdfs:label "prcnt Local Labor" ;
+                 skos:prefLabel "Percentage of Local Labor" ;
+                 skos:scopeNote "uponto.dp.4.1" .
+
+
+###  http://www.uponto.link/ontology/#prcntNPVOfCAPEX
+:prcntNPVOfCAPEX rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf :projectFinancialProperties ;
+                 rdfs:domain [ rdf:type owl:Class ;
+                               owl:unionOf ( :CostDefinition
+                                             :ProjectInfoCard
+                                           )
+                             ] ;
+                 rdfs:range xsd:decimal ;
+                 rdfs:comment "The percentage of the NPV over Capex." ;
+                 rdfs:label "prcnt NPV Of CAPEX" ;
+                 skos:prefLabel "Percentage of NPV to Capex" ;
+                 skos:scopeNote "uponto.dp.11.8" .
+
+
+###  http://www.uponto.link/ontology/#prcntOvertimeHoursAtSite
+:prcntOvertimeHoursAtSite rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf :projectLaborAndSafetyDataProperties ;
+                          rdfs:domain :ProjectInfoCard ;
+                          rdfs:range xsd:decimal ;
+                          dcterms:source "<a href=\"https://www.construction-institute.org/resources/knowledgebase/best-practices/benchmarking-metrics\" target=\"_blank\"> Construction Industry Institute (CII) 2020.</a> Benchmarking & Metrics." ;
+                          rdfs:comment "The percentage of the number of overtime man-hours at site to the total number of man-hours at site." ;
+                          rdfs:label "prcnt Overtime Hours At Site" ;
+                          skos:prefLabel "Percentage of Overtime Hours At Site" ;
+                          skos:scopeNote "uponto.dp.4.7" .
+
+
+###  http://www.uponto.link/ontology/#prcntRegionalLabor
+:prcntRegionalLabor rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :projectLaborAndSafetyDataProperties ;
+                    rdfs:domain :ProjectInfoCard ;
+                    rdfs:range xsd:decimal ;
+                    rdfs:comment "The percentage of labor force recruited from regional areas to the project, or across the project's domestic jurisdiction." ;
+                    rdfs:label "prcnt Regional Labor" ;
+                    skos:prefLabel "Percentage of Regional Labor" ;
+                    skos:scopeNote "uponto.dp.4.2" .
+
+
+###  http://www.uponto.link/ontology/#prcntTargetReachedAtRampUp
+:prcntTargetReachedAtRampUp rdf:type owl:DatatypeProperty ;
+                            rdfs:subPropertyOf :definitionProperties ;
+                            rdfs:domain :ProjectInfoCard ;
+                            rdfs:range xsd:decimal ;
+                            dcterms:source "<a href=\"https://onlinelibrary.wiley.com/doi/book/10.1002/9781119201045\" target=\"_blank\"> Merrow 2011.</a> Industrial Megaprojects: Concepts, Strategies, and Practices for Success." ;
+                            rdfs:comment "The percentage of the target nameplate capacity reached after planned ramp up." ;
+                            rdfs:label "prcnt Target Reached At Ramp Up" ;
+                            skos:prefLabel "Percentage Target Reached At Ramp Up" ;
+                            skos:scopeNote "uponto.dp.3.15" .
+
+
+###  http://www.uponto.link/ontology/#prcntTotalDirectMhrs
+:prcntTotalDirectMhrs rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf :costAndScheduleProperties ;
+                      rdfs:domain [ rdf:type owl:Class ;
+                                    owl:unionOf ( :CostDefinition
+                                                  :ProjectInfoCard
+                                                )
+                                  ] ;
+                      rdfs:range xsd:decimal ;
+                      rdfs:comment "The total number of project man-hours directly attributable to specific project activities, or tasks." ;
+                      rdfs:label "prcnt  Total Direct Mhrs" ;
+                      skos:prefLabel "Percentage of Total Direct Man-hours" ;
+                      skos:scopeNote "uponto.dp.10.10" .
+
+
+###  http://www.uponto.link/ontology/#prcntTotalIndirectMhrs
+:prcntTotalIndirectMhrs rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf :costAndScheduleProperties ;
+                        rdfs:domain [ rdf:type owl:Class ;
+                                      owl:unionOf ( :CostDefinition
+                                                    :ProjectInfoCard
+                                                  )
+                                    ] ;
+                        rdfs:range xsd:decimal ;
+                        rdfs:comment "The total number of project man-hours that are not directly attributable to specific project activities, or tasks, but rather are incurred to enable the project, such as rent, personal protective equipment, training, etc." ;
+                        rdfs:label "prcnt  Total Indirect Mhrs" ;
+                        skos:prefLabel "Percentage of Total Indirect Man-hours" ;
+                        skos:scopeNote "uponto.dp.10.11" .
+
+
+###  http://www.uponto.link/ontology/#projectAdjustedCostProperties
+:projectAdjustedCostProperties rdf:type owl:DatatypeProperty ;
+                               rdfs:domain :CostDefinition ;
+                               rdfs:comment "This is a superclass data property corresponding to project's adjusted cost values after normalizations are done." ;
+                               rdfs:label "project Adjusted Cost Properties" ;
+                               skos:prefLabel "Project Adjusted Cost Properties" ;
+                               skos:scopeNote "uponto.dp.8.0" .
+
+
+###  http://www.uponto.link/ontology/#projectClimateAccessPermitting
+:projectClimateAccessPermitting rdf:type owl:DatatypeProperty ;
+                                rdfs:domain :ProjectInfoCard ;
+                                rdfs:comment "This is a superclass data property corresponding to project's location, its climate, and its access, and the permitting issues benchmarking. The permitting properties include the level of permitting problems as it relates to access, operation, extraction, transportation, environmental, and social licence to operate." ;
+                                rdfs:label "project Climate Access Permitting" ;
+                                skos:prefLabel "Project Climate Access Permitting" ;
+                                skos:scopeNote "uponto.dp.6.0" .
+
+
+###  http://www.uponto.link/ontology/#projectContractProperties
+:projectContractProperties rdf:type owl:DatatypeProperty ;
+                           rdfs:label "project Contract Properties" ;
+                           skos:prefLabel "Project Contract Properties" ;
+                           skos:scopeNote "uponto.dp.13.0" .
+
+
+###  http://www.uponto.link/ontology/#projectCostDataProperties
+:projectCostDataProperties rdf:type owl:DatatypeProperty ;
+                           rdfs:domain :CostDefinition ;
+                           rdfs:comment "This is a superclass data property corresponding to project cost scope and nature." ;
+                           rdfs:label "project Cost Data Properties" ;
+                           skos:prefLabel "Project Cost Data Properties" ;
+                           skos:scopeNote "uponto.dp.7.0" .
+
+
+###  http://www.uponto.link/ontology/#projectFinancialProperties
+:projectFinancialProperties rdf:type owl:DatatypeProperty ;
+                            rdfs:domain [ rdf:type owl:Class ;
+                                          owl:unionOf ( :CostDefinition
+                                                        :ProjectInfoCard
+                                                      )
+                                        ] ;
+                            rdfs:comment "This is a superclass data property corresponding to project financial benchmarking. These properties include the payback period and average interest and profit margins of the project. Care must be given to describe these data as in a normalized way and as percentages of CAPEX figures." ;
+                            rdfs:label "project Financial Properties" ;
+                            skos:prefLabel "Project Financial Properties" ;
+                            skos:scopeNote "uponto.dp.11.0" .
+
+
+###  http://www.uponto.link/ontology/#projectIndexExtractableProperties
+:projectIndexExtractableProperties rdf:type owl:DatatypeProperty ;
+                                   rdfs:domain :Project ;
+                                   rdfs:comment "This is a superclass data property to a set extractable indices about the project at the project midpoint date." ;
+                                   rdfs:label "project Index Extractable Properties" ;
+                                   skos:prefLabel "Project Index Extractable Properties" ;
+                                   skos:scopeNote "uponto.dp.2.0" .
+
+
+###  http://www.uponto.link/ontology/#projectLaborAndSafetyDataProperties
+:projectLaborAndSafetyDataProperties rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain :ProjectInfoCard ;
+                                     rdfs:comment "This is a superclass data property corresponding to project labor, productivity, and safety issues." ;
+                                     rdfs:label "project Labor And Safety Data Properties" ;
+                                     skos:prefLabel "Project Labor And Safety Data Properties" ;
+                                     skos:scopeNote "uponto.dp.4.0" .
+
+
+###  http://www.uponto.link/ontology/#projectMainDataProperties
+:projectMainDataProperties rdf:type owl:DatatypeProperty ;
+                           rdfs:domain :Project ;
+                           rdfs:comment "This is a superclass data property to a group of high level description properties for the project." ;
+                           rdfs:label "project Main Data Properties" ;
+                           skos:prefLabel "Project Main Data Properties" ;
+                           skos:scopeNote "uponto.dp.1.0" .
+
+
+###  http://www.uponto.link/ontology/#projectRatingProperties
+:projectRatingProperties rdf:type owl:DatatypeProperty ;
+                         rdfs:domain :Status ;
+                         rdfs:comment "This is a superclass data property corresponding to project ratings. There are various ways to collect ratings, including the FEL system, or the Project Development Rating System. Nonetheless, the ratings are to be reported as percentages of highest possible ratings." ;
+                         rdfs:label "project Rating Properties" ;
+                         skos:prefLabel "Project Rating Properties" ;
+                         skos:scopeNote "uponto.dp.12.0" .
+
+
+###  http://www.uponto.link/ontology/#projectTeamDataProperties
+:projectTeamDataProperties rdf:type owl:DatatypeProperty ;
+                           rdfs:domain :ProjectInfoCard ;
+                           rdfs:comment "This is a superclass data property corresponding to project team development benchmarking. These properties include the experience of the client in the sector and the country of the project." ;
+                           rdfs:label "project Team Data Properties" ;
+                           skos:prefLabel "Project Team Data Properties" ;
+                           skos:scopeNote "uponto.dp.5.0" .
+
+
+###  http://www.uponto.link/ontology/#untilGate
+:untilGate rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Status ;
+           rdfs:comment "Linking an instance of the class Status to its corresponding instance of the class Gate, that reflects until which point on project phasing stages the cost spending, corresponding to either an estimate or an actual cost instance, is considered. This property links through a blank node that collects the date with :hasDate data property." ;
+           rdfs:label "until Gate" ;
+           skos:prefLabel "until Gate" ;
+           skos:scopeNote "uponto.op.3.5" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.uponto.link/ontology/#AdjustedCost
+:AdjustedCost rdf:type owl:Class ;
+              rdfs:subClassOf :CostDefinition ;
+              rdfs:comment "Adjusted Cost class is a subclass of the Cost Definition class that holds the normalised cost information, included to normalised cost for exchange rate, inflation, escalation, and purchasing power parity." ;
+              rdfs:label "Adjusted Cost" .
+
+
+###  http://www.uponto.link/ontology/#Agent
+:Agent rdf:type owl:Class ;
+       dcterms:source "http://xmlns.com/foaf/0.1/Organization"^^xsd:anyURI ;
+       rdfs:comment "An agent (eg. person, group, software or physical artifact)." ;
+       rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/> ;
+       rdfs:label "Agent" ;
+       ns:term_status "stable" .
+
+
+###  http://www.uponto.link/ontology/#Bonuses
+:Bonuses rdf:type owl:Class ;
+         rdfs:subClassOf :Payment ;
+         dcterms:source "<a href=\"https://ec.europa.eu/info/business-economy-euro/company-reporting-and-auditing/company-reporting/public-country-country-reporting_en\" target=\"_blank\"> European Commission 2016.</a> Public country-by-country reporting." ;
+         rdfs:comment "Bonuses payment types as described by the European Commission for disclosure requirements of  extractive and logging industries." ;
+         rdfs:label "Bonuses" .
+
+
+###  http://www.uponto.link/ontology/#Building
+:Building rdf:type owl:Class ;
+          rdfs:subClassOf :Project ;
+          rdfs:comment "A group of projects within the construction industry that is included but not limited to: Communications Center, Courthouse, Low rise Residential, High rise Residential, Embassy, Low rise Office, High rise Office, Hospital, Laboratory, Maintenance Facilities, Movie Theatre, Parking Garage, Physical Fitness Center, Prison, Restaurant/Nightclub, Retail Commercial, School, Warehouse." ;
+          rdfs:label "Building" .
+
+
+###  http://www.uponto.link/ontology/#Commodity
+:Commodity rdf:type owl:Class ;
+           rdfs:comment "Commodity class holds instances of the different specific resources, materials, minerals, and metals that are the typically the products of the projects." ;
+           rdfs:label "Commodity" .
+
+
+###  http://www.uponto.link/ontology/#Contract
+:Contract rdf:type owl:Class ;
+          dcterms:source "https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/Contract" ;
+          rdfs:comment "As described by fibo: Voluntary, deliberate agreement between two or more competent parties to which those parties agree to be legally bound, and to which the parties must have provided valuable consideration." ;
+          rdfs:label "Contract" .
+
+
+###  http://www.uponto.link/ontology/#ContractParty
+:ContractParty rdf:type owl:Class ;
+               dcterms:source "https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/ContractParty" ;
+               rdfs:comment "As described by fibo: Legally competent person or organization that has entered into the binding agreement, accepting and/or conceding obligations, responsibilities, and benefits as specified" ;
+               rdfs:label "Contract Party" .
+
+
+###  http://www.uponto.link/ontology/#Cost
+:Cost rdf:type owl:Class ;
+      rdfs:subClassOf :CostDefinition ;
+      rdfs:comment "Cost class is subclass of the Cost Definition class that holds the cost information, whether estimated or actual cost, at current value currency  with regards to the Status instance specific point in time." ;
+      rdfs:label "Cost" .
+
+
+###  http://www.uponto.link/ontology/#CostDefinition
+:CostDefinition rdf:type owl:Class ;
+                rdfs:comment "Cost Definition class host instances of cost items, whether estimated cost or actual cost of the projects as specified based on the Status class and phasing methodologies for any project. " ;
+                rdfs:label "Cost Definition" .
+
+
+###  http://www.uponto.link/ontology/#Country
+:Country rdf:type owl:Class ;
+         dcterms:source "http://id.loc.gov/vocabulary/countries/MARC_Country" ;
+         rdfs:label "Country" ;
+         owl:equivalentClass "http://id.loc.gov/vocabulary/countries/MARC_Country" .
+
+
+###  http://www.uponto.link/ontology/#Currency
+:Currency rdf:type owl:Class ;
+          rdfs:comment "Currency is a medium of exchange for goods and services. The official currency of any jurisdiction in which the cost information is reported." ;
+          rdfs:label "Currency" .
+
+
+###  http://www.uponto.link/ontology/#Disclosure
+:Disclosure rdf:type owl:Class ;
+            rdfs:comment "Overall class to host all information that is publicly disclosed regarding the project including payments and reports." ;
+            rdfs:label "Disclosure" .
+
+
+###  http://www.uponto.link/ontology/#Dividends
+:Dividends rdf:type owl:Class ;
+           rdfs:subClassOf :Payment ;
+           dcterms:source "<a href=\"https://ec.europa.eu/info/business-economy-euro/company-reporting-and-auditing/company-reporting/public-country-country-reporting_en\" target=\"_blank\"> European Commission 2016.</a> Public country-by-country reporting." ;
+           rdfs:comment "Dividend payment types as described by the European Commission for disclosure requirements of  extractive and logging industries." ;
+           rdfs:label "Dividends" .
+
+
+###  http://www.uponto.link/ontology/#Document
+:Document rdf:type owl:Class ;
+          rdfs:comment "Any document, report, or receipt." ;
+          rdfs:label "Document" .
+
+
+###  http://www.uponto.link/ontology/#Fees
+:Fees rdf:type owl:Class ;
+      rdfs:subClassOf :Payment ;
+      dcterms:source "<a href=\"https://ec.europa.eu/info/business-economy-euro/company-reporting-and-auditing/company-reporting/public-country-country-reporting_en\" target=\"_blank\"> European Commission 2016.</a> Public country-by-country reporting." ;
+      rdfs:comment "Fee payment types as described by the European Commission for disclosure requirements of  extractive and logging industries." ;
+      rdfs:label "Fees" .
+
+
+###  http://www.uponto.link/ontology/#Gate
+:Gate rdf:type owl:Class ;
+      rdfs:comment "Gate class holds specific instances of gates based on project phasing methodologies." ;
+      rdfs:label "Gate" .
+
+
+###  http://www.uponto.link/ontology/#HeavyIndustrial
+:HeavyIndustrial rdf:type owl:Class ;
+                 rdfs:subClassOf :Project ;
+                 rdfs:comment "A group of construction projects with extensive ties to other engineering sectors. Heavy industrial projects involve large and heavy products or equipment or facilities. Heavy industrial projects include but are not limited to: Chemical Manufacturing, Electric Energy, Environmental, Metals and Minerals Processing, Mining, Tailing, Natural Gas Processing, Oil/Gas Production, Oil Refining, Cogeneration, Pulp and Paper, Other Heavy Industrial. " ;
+                 rdfs:label "Heavy Industrial" .
+
+
+###  http://www.uponto.link/ontology/#Infrastructure
+:Infrastructure rdf:type owl:Class ;
+                rdfs:subClassOf :Project ;
+                rdfs:comment "A group of projects within the construction industry with ties to other engineering sectors. Infrastructure projects often directly provide service to citizens. Infrastructure projects include but are not limited to: Airport, Central Utility Plant, Electrical Distribution, Flood Control, Road and Highway, Marine Facilities, Navigation, Process Control, Rail, Tunneling, Water/Wastewater, Telecom, Wide Area Network, Pipeline, Tank farms, Gas Distribution, Other Infrastructure." ;
+                rdfs:label "Infrastructure" .
+
+
+###  http://www.uponto.link/ontology/#InfrastructureImprovement
+:InfrastructureImprovement rdf:type owl:Class ;
+                           rdfs:subClassOf :Payment ;
+                           dcterms:source "<a href=\"https://ec.europa.eu/info/business-economy-euro/company-reporting-and-auditing/company-reporting/public-country-country-reporting_en\" target=\"_blank\"> European Commission 2016.</a> Public country-by-country reporting." ;
+                           rdfs:comment "Infrastructure improvement payment types as described by the European Commission for disclosure requirements of  extractive and logging industries." ;
+                           rdfs:label "Infrastructure Improvement" .
+
+
+###  http://www.uponto.link/ontology/#LightIndustrial
+:LightIndustrial rdf:type owl:Class ;
+                 rdfs:subClassOf :Project ;
+                 rdfs:comment "A group of construction projects with ties to other engineering sectors. Light industrial projects include but are not limited to: Automotive Manufacturing, Consumer Products Manufacturing, Foods, Microelectronics Manufacturing, Office Products Manufacturing, Pharmaceutical Manufacturing, Pharmaceutical Labs, Pharmaceutical Warehouse, Other Light Industrial." ;
+                 rdfs:label "Light Industrial" .
+
+
+###  http://www.uponto.link/ontology/#Organization
+:Organization rdf:type owl:Class ;
+              rdfs:subClassOf :Agent ;
+              dcterms:source "http://xmlns.com/foaf/0.1/Organization"^^xsd:anyURI ;
+              rdfs:comment "An organization." ;
+              rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/> ;
+              rdfs:label "Organization" ;
+              ns:term_status "stable" .
+
+
+###  http://www.uponto.link/ontology/#Payment
+:Payment rdf:type owl:Class ;
+         rdfs:comment "Overall class hosting all monetary payments. " ;
+         rdfs:label "Payment" .
+
+
+###  http://www.uponto.link/ontology/#Point
+:Point rdf:type owl:Class ;
+       rdfs:subClassOf :SpatialThing ;
+       rdfs:comment """ 
+Uniquely identified by lat/long/alt. i.e.
+
+spaciallyIntersects(P1, P2) :- lat(P1, LAT), long(P1, LONG), alt(P1, ALT),
+  lat(P2, LAT), long(P2, LONG), alt(P2, ALT).
+
+sameThing(P1, P2) :- type(P1, Point), type(P2, Point), spaciallyIntersects(P1, P2).
+  """ ,
+                    """A point, typically described using a coordinate system relative to Earth, such as WGS84.
+  """ ;
+       rdfs:label "Point" .
+
+
+###  http://www.uponto.link/ontology/#PrivateEntity
+:PrivateEntity rdf:type owl:Class ;
+               rdfs:subClassOf :Organization ;
+               rdfs:comment "Private entity is an organization that is not directly responsible to public interest, and usually is involves to enhance its economic bottom lines." ;
+               rdfs:label "Private Entity" .
+
+
+###  http://www.uponto.link/ontology/#Product
+:Product rdf:type owl:Class ;
+         rdfs:comment "Product class hols information regarding the output of the project, including the specific out put amount of any commodity." ;
+         rdfs:label "Product" .
+
+
+###  http://www.uponto.link/ontology/#ProductionEntitlements
+:ProductionEntitlements rdf:type owl:Class ;
+                        rdfs:subClassOf :Payment ;
+                        dcterms:source "<a href=\"https://ec.europa.eu/info/business-economy-euro/company-reporting-and-auditing/company-reporting/public-country-country-reporting_en\" target=\"_blank\"> European Commission 2016.</a> Public country-by-country reporting." ;
+                        rdfs:comment "Production entitlement payment types as described by the European Commission for disclosure requirements of  extractive and logging industries." ;
+                        rdfs:label "Production Entitlements" .
+
+
+###  http://www.uponto.link/ontology/#Project
+:Project rdf:type owl:Class ;
+         dcterms:source "<a href=\"https://www.sciencedirect.com/science/article/abs/pii/S0263786305001237\" target=\"_blank\"> Turner 2006.</a> Towards a theory of project management: The nature of the project." ;
+         rdfs:comment "A project is a temporary organization to which resources are assigned to do work to bring about beneficial change. (The resources may be human, material or financial)" ;
+         rdfs:label "Project" .
+
+
+###  http://www.uponto.link/ontology/#ProjectContext
+:ProjectContext rdf:type owl:Class ;
+                rdfs:comment "A Project Context instance is an umbrella entity reflecting several different projects located on the same facility or location and having  the same context. The Project Context class is essential for information extraction and building knowledge graphs." ;
+                rdfs:label "Project Context" .
+
+
+###  http://www.uponto.link/ontology/#ProjectInfoCard
+:ProjectInfoCard rdf:type owl:Class ;
+                 rdfs:subClassOf owl:Thing ;
+                 rdfs:comment "ProjectInfoCard class corresponds to the second level of project data maturity and inference. It hosts several project overall data properties." ;
+                 rdfs:label "Project InfoCard" .
+
+
+###  http://www.uponto.link/ontology/#PublicEntity
+:PublicEntity rdf:type owl:Class ;
+              rdfs:subClassOf :Organization ;
+              rdfs:comment "Private entity is an organization that is a unit of government, or closely related to it, that safeguards public interest." ;
+              rdfs:label "Public Entity" .
+
+
+###  http://www.uponto.link/ontology/#ResearchInstitue
+:ResearchInstitue rdf:type owl:Class ;
+                  rdfs:subClassOf :Organization ;
+                  rdfs:comment "Research institute is an organization that investigate, research and provides data." ;
+                  rdfs:label "Research Institue" .
+
+
+###  http://www.uponto.link/ontology/#Royalties
+:Royalties rdf:type owl:Class ;
+           rdfs:subClassOf :Payment ;
+           dcterms:source "<a href=\"https://ec.europa.eu/info/business-economy-euro/company-reporting-and-auditing/company-reporting/public-country-country-reporting_en\" target=\"_blank\"> European Commission 2016.</a> Public country-by-country reporting." ;
+           rdfs:comment "Royalty payment types as described by the European Commission for disclosure requirements of  extractive and logging industries." ;
+           rdfs:label "Royalties" .
+
+
+###  http://www.uponto.link/ontology/#SpatialThing
+:SpatialThing rdf:type owl:Class ;
+              dcterms:source "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"^^xsd:anyURI ;
+              rdfs:comment """Anything with spatial extent, i.e. size, shape, or position.
+ e.g. people, places, bowling balls, as well as abstract areas like cubes.
+""" ;
+              rdfs:label "SpatialThing" .
+
+
+###  http://www.uponto.link/ontology/#Status
+:Status rdf:type owl:Class ;
+        rdfs:comment "Status class corresponds to the project lifecycle data at specific gates." ;
+        rdfs:label "Status" .
+
+
+###  http://www.uponto.link/ontology/#Taxes
+:Taxes rdf:type owl:Class ;
+       rdfs:subClassOf :Payment ;
+       dcterms:source "<a href=\"https://ec.europa.eu/info/business-economy-euro/company-reporting-and-auditing/company-reporting/public-country-country-reporting_en\" target=\"_blank\"> European Commission 2016.</a> Public country-by-country reporting." ;
+       rdfs:comment "Tax payment types as described by the European Commission for disclosure requirements of  extractive and logging industries." ;
+       rdfs:label "Taxes" .
+
+
+###  http://www.uponto.link/ontology/#Unit
+:Unit rdf:type owl:Class ;
+      dcterms:source "http://www.wurvoc.org/resource/om-2/Unit" ;
+      rdfs:comment "A fixed quantity (as of length, time, or value) used as a standard of measurement." ;
+      rdfs:label "Unit" ;
+      owl:equivalentClass "http://www.wurvoc.org/resource/om-2/Unit" .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.uponto.link/ontology/#Industrial_A
+:Industrial_A rdf:type owl:NamedIndividual ,
+                       :Gate ;
+              rdfs:comment "Start of Conceptual Studies" ;
+              rdfs:label "Gate A for Industrial Projects" .
+
+
+###  http://www.uponto.link/ontology/#Industrial_B
+:Industrial_B rdf:type owl:NamedIndividual ,
+                       :Gate ;
+              rdfs:comment "Conceptual Studies Complete (Phase 1)" ;
+              rdfs:label "Gate B for Industrial Projects" .
+
+
+###  http://www.uponto.link/ontology/#Industrial_C
+:Industrial_C rdf:type owl:NamedIndividual ,
+                       :Gate ;
+              rdfs:comment "Prefeasibility Study Complete (Phase2) Commitment to Project" ;
+              rdfs:label "Gate C for Industrial Projects" .
+
+
+###  http://www.uponto.link/ontology/#Industrial_D
+:Industrial_D rdf:type owl:NamedIndividual ,
+                       :Gate ;
+              rdfs:comment "Feasibility Study Complete (Phase 3) Full Fund Authorization Commitment to Start Date" ;
+              rdfs:label "Gate D for Industrial Projects" .
+
+
+###  http://www.uponto.link/ontology/#Industrial_E
+:Industrial_E rdf:type owl:NamedIndividual ,
+                       :Gate ;
+              rdfs:comment "Start of Construction (During Phase 4)" ;
+              rdfs:label "Gate E for Industrial Projects" .
+
+
+###  http://www.uponto.link/ontology/#Industrial_F
+:Industrial_F rdf:type owl:NamedIndividual ,
+                       :Gate ;
+              rdfs:comment "Engineering and Construction Complete" ;
+              rdfs:label "Gate F for Industrial Projects" .
+
+
+###  http://www.uponto.link/ontology/#Industrial_G
+:Industrial_G rdf:type owl:NamedIndividual ,
+                       :Gate ;
+              rdfs:comment "Primary Commissioning Complete" ;
+              rdfs:label "Gate G for Industrial Projects" .
+
+
+###  http://www.uponto.link/ontology/#Industrial_H
+:Industrial_H rdf:type owl:NamedIndividual ,
+                       :Gate ;
+              rdfs:comment "Main Commissioning Complete" ;
+              rdfs:label "Gate H for Industrial Projects" .
+
+
+###  http://www.uponto.link/ontology/#Industrial_I
+:Industrial_I rdf:type owl:NamedIndividual ,
+                       :Gate ;
+              rdfs:comment "Ramp Up to Design Capacity Complete" ;
+              rdfs:label "Gate I for Industrial Projects" .
+
+
+###  http://www.uponto.link/ontology/#Industrial_J
+:Industrial_J rdf:type owl:NamedIndividual ,
+                       :Gate ;
+              rdfs:comment "Expansion  or Major Addition  Compelete" ;
+              rdfs:label "Gate J for Industrial Projects" .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+:confers rdfs:comment "As described by fibo: This property should be read as describing the conferral of some legal power or duty, some commitment or some social construct, and is a property of some social construct such as an agreement or some legal authority. " ;
+         dcterms:source "https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/confers" ;
+         skos:scopeNote "uponto.op.4.1" ;
+         owl:equivalentProperty "https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/confers" ;
+         rdfs:label "confers" ;
+         skos:prefLabel "confers" .
+
+
+:hasActualCost skos:scopeNote "uponto.op.3.2" ;
+               rdfs:comment "Linking an instance of the class Status to an instance of the class Cost that reflects the actual cost of the project at that state." ;
+               rdfs:label "has Actual Cost" ;
+               skos:prefLabel "has Actual Cost" .
+
+
+:hasActualized rdfs:comment "Linking an instance of the class Cost that is an estimate, to an instance of the class Cost, that is an actual cost for the exact same estimate." ;
+               skos:prefLabel "has Actualized" ;
+               skos:scopeNote "uponto.op.2.2" ;
+               rdfs:label "has Actualized" .
+
+
+:hasAdjustedCost skos:scopeNote "uponto.op.2.1" ;
+                 rdfs:comment "Linking an instance of the class Cost to an instance of the class Adjusted Cost, that reflects the normalised cost based on inflation, escalation, and purchasing power parities in a specific currency and at a specific reference cost date." ;
+                 rdfs:label "has Adjusted Cost" ;
+                 skos:prefLabel "has Adjusted Cost" .
+
+
+:hasCommodity skos:scopeNote "uponto.op.0.4" ;
+              skos:prefLabel "has Commodity" ;
+              rdfs:comment "Linking an instance of the class Project, to an instance of the class Commodity that constitute the products the  project." ;
+              rdfs:label "has Commodity" .
+
+
+:hasContract skos:prefLabel "has Contract" ;
+             rdfs:comment "Linking an instance of the class Project, to an instance of the class Contract, that describes the roles, relationships, responsibilities, and the benefits of the project." ;
+             skos:scopeNote "uponto.op.1.4" ;
+             rdfs:label "has Contract" .
+
+
+:hasContractParty owl:equivalentProperty "https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasContractParty" ;
+                  rdfs:label "has Contract Party" ;
+                  rdfs:comment "As described by fibo: Indicates a person or organization that has entered into the binding agreement, accepting and/or conceding obligations, responsibilities, and benefits as specified" ;
+                  skos:prefLabel "has Contract Party" ;
+                  dcterms:source "https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/hasContractParty" ;
+                  skos:scopeNote "uponto.op.4.2" .
+
+
+:hasContractedResource rdfs:comment "Linking an instance of the class Contract to its corresponding natural resources that are conferred by the contract to the contract party. The corresponding natural resource will be an instance of the class Commodity." ;
+                       skos:scopeNote "uponto.op.4.6" ;
+                       rdfs:label "has Contracted Resource" ;
+                       skos:prefLabel "has Contracted Resource" .
+
+
+:hasCountry rdfs:label "has Country" ;
+            rdfs:comment "General object property that links any instance to its Country as an instance of the class Country." ;
+            skos:prefLabel "has Country" ;
+            skos:scopeNote "uponto.op.0.1" .
+
+
+:hasCurrency skos:scopeNote "uponto.op.0.3" ;
+             rdfs:comment "Linking an instance of the class Cost Definition to an instance of the class Currency." ;
+             rdfs:label "has Currency" ;
+             skos:prefLabel "has Currency" .
+
+
+:hasDisclosure rdfs:label "has Disclosure" ;
+               skos:prefLabel "has Disclosure" ;
+               rdfs:comment "Linking an instance of the class Project, to an instance of the class Disclosure that holds all the project publicly disclosed information." ;
+               skos:scopeNote "uponto.op.1.5" .
+
+
+:hasEstimatedCost skos:scopeNote "uponto.op.3.1" ;
+                  skos:prefLabel "has Estimated Cost" ;
+                  rdfs:comment "Linking an instance of the class Status to an instance of the class Cost that reflects the estimated cost of the project at that state." ;
+                  rdfs:label "has Estimated Cost" .
+
+
+:hasIdentifiedContractParty skos:prefLabel "has Identified Contract Party" ;
+                            skos:scopeNote "uponto.op.4.3" ;
+                            rdfs:comment "Linking an instance of the class Contract to its corresponding contract parties as instances of the class Organization. This is a shortcut object property where the specifics of the Contract Party such as roles and responsibilities are not known. " ;
+                            rdfs:label "has Identified Contract Party" .
+
+
+:hasIdentity rdfs:label "has Identity" ;
+             rdfs:comment "As described by fibo: provides a means for identifying something that fills a particular role." ;
+             dcterms:source "https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/hasIdentity" ;
+             skos:scopeNote "uponto.op.4.4" ;
+             skos:prefLabel "has Identity" ;
+             owl:equivalentProperty "https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/hasIdentity" .
+
+
+:hasInfoCard rdfs:comment "Linking an instance of the class Project, to an instance of the class ProjectInfoCard where the overall properties of the project is collected." ;
+             skos:scopeNote "uponto.op.1.3" ;
+             rdfs:label "has InfoCard" ;
+             skos:prefLabel "has InfoCard" .
+
+
+:hasOperator rdfs:comment "Linking an instance of the class Project to the entity that is operating the project." ;
+             skos:prefLabel "has Operator" ;
+             rdfs:label "has Operator" ;
+             skos:scopeNote "uponto.op.1.2" .
+
+
+:hasPayment rdfs:comment "Linking an instance of the class Disclosure to its corresponding instances of the class Payment." ;
+            skos:prefLabel "has Payment" ;
+            skos:scopeNote "uponto.op.4.5" ;
+            rdfs:label "has Payment" .
+
+
+:hasProduct skos:scopeNote "uponto.op.1.6" ;
+            rdfs:label "has Product" ;
+            skos:prefLabel "has Product" ;
+            rdfs:comment "Linking an instance of the class Project, to an instance of the class Product, where the specificities of the project products are collected." .
+
+
+:hasReportingEntity rdfs:comment "General object property that links any instance to its reporting entity as an instance of the class Organization." ;
+                    skos:prefLabel "has Reporting Entity" ;
+                    rdfs:label "has Reporting Entity" ;
+                    skos:scopeNote "uponto.op.0.6" .
+
+
+:hasSponsor rdfs:comment "Linking an instance of the class Project to the sponsoring entities. The Sponsor, whether public or private, usually holds major equity and the responsibility over the project. Projects in Joint Ventures can have several sponsors." ;
+            skos:scopeNote "uponto.op.1.1" ;
+            rdfs:label "has Sponsor" ;
+            skos:prefLabel "has Sponsor" .
+
+
+:hasState rdfs:comment "General object property that links any instance to its State as an instance of the class Country." ;
+          rdfs:label "has State" ;
+          skos:scopeNote "uponto.op.0.2" ;
+          skos:prefLabel "has State" .
+
+
+:hasStatus skos:scopeNote "uponto.op.1.7" ;
+           rdfs:label "has Status" ;
+           rdfs:comment "Linking an instance of the class Project, to an instance of the class Status, that holds the lifecycle information regarding the project at specific gates, in between major phases." ;
+           skos:prefLabel "has Status" .
+
+
+:hasUnit rdfs:label "has Unit" ;
+         skos:prefLabel "has Unit" ;
+         skos:scopeNote "uponto.op.0.5" ;
+         dcterms:source "http://www.wurvoc.org/resource/om-2/hasUnit" ;
+         rdfs:comment "General object property that links any instance to its unit of measure." .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Agent
+                :Commodity
+                :Contract
+                :ContractParty
+                :CostDefinition
+                :Country
+                :Currency
+                :Disclosure
+                :Document
+                :Gate
+                :Payment
+                :Product
+                :Project
+                :ProjectContext
+                :ProjectInfoCard
+                :SpatialThing
+                :Status
+                :Unit
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Building
+                :HeavyIndustrial
+                :Infrastructure
+                :LightIndustrial
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
